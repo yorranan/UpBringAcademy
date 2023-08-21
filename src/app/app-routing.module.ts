@@ -1,15 +1,23 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { SignInComponent } from './components/sign-in/sign-in.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { BrowserModule } from "@angular/platform-browser";
+import { Routes, RouterModule } from "@angular/router";
+import { SessionLayoutComponent } from "./layouts/session-layout/session-layout.component";
+
 
 const routes: Routes = [
-{path: 'login', component: SignInComponent},
-{path: 'dashboard', component: DashboardComponent}
+  {
+    path: '/',
+    component: SessionLayoutComponent
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    CommonModule,
+    BrowserModule,
+    RouterModule.forRoot(routes)
+  ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
