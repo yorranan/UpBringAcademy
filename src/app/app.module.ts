@@ -8,10 +8,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
-import { SessionLayoutComponent } from './layouts/session-layout/session-layout.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
@@ -20,8 +16,6 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
-    AuthLayoutComponent,
-    SessionLayoutComponent,
     DashboardComponent,
   ],
   imports: [
