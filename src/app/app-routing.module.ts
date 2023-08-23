@@ -2,8 +2,10 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
 import { Routes, RouterModule } from "@angular/router";
-import { DashboardComponent } from "./pages/dashboard/dashboard.component";
-import { TaskComponent } from "./pages/task/task/task.component";
+import { DashboardComponent } from "./view/pages/dashboard/dashboard.component";
+import { TaskComponent } from "./view/pages/task/task/task.component";
+import { UserComponent } from "./view/pages/user/user/user.component";
+import { GratificationComponent } from "./view/pages/gratification/gratification/gratification.component";
 
 
 const routes: Routes = [
@@ -12,8 +14,16 @@ const routes: Routes = [
     component: DashboardComponent
   },
   {
+    path: 'user',
+    component: UserComponent
+  },
+  {
     path: 'task',
     component: TaskComponent
+  },
+  {
+    path: 'gratification',
+    component: GratificationComponent
   }
 ];
 

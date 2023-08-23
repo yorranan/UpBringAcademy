@@ -3,6 +3,8 @@ import { ROUTES } from "../sidebar/sidebar.component";
 import { Location } from "@angular/common";
 import { Router } from "@angular/router";
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import User from "src/model/entities/User";
+import UserService from "src/model/service/UserService";
 
 @Component({
   selector: "app-navbar",
@@ -15,6 +17,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   mobile_menu_visible: any = 0;
   private toggleButton: any;
   private sidebarVisible: boolean;
+
+  user: User = new User("JosedaSilva");
 
   public isCollapsed = true;
 
