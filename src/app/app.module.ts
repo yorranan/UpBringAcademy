@@ -12,6 +12,7 @@ import { DashboardComponent } from './view/pages/dashboard/dashboard.component';
 import { TaskComponent } from './view/pages/task/task/task.component';
 import { UserComponent } from './view/pages/user/user/user.component';
 import { GratificationComponent } from './view/pages/gratification/gratification/gratification.component';
+import UserService from 'src/app/model/service/UserService';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { GratificationComponent } from './view/pages/gratification/gratification
     AppRoutingModule,
     NgbModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

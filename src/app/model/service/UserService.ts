@@ -1,11 +1,14 @@
 import User from "../entities/User";
 
 export default class UserService{
-    private _usuarios: User[];
+    private _usuarios: User[] = [];
 
     constructor(){
-        const usuario: User = new User("Jose da Silva");
-        this._usuarios.push(usuario);
+        this._usuarios.push(new User("Gabriel Francisco Jose da Silva"));
+    }
+
+    obterTodos(): User[]{
+        return this._usuarios;
     }
 
     obterPorId(id: number): User{

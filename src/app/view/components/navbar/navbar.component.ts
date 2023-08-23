@@ -3,8 +3,8 @@ import { ROUTES } from "../sidebar/sidebar.component";
 import { Location } from "@angular/common";
 import { Router } from "@angular/router";
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import User from "src/model/entities/User";
-import UserService from "src/model/service/UserService";
+import User from "src/app/model/entities/User";
+import UserService from "src/app/model/service/UserService";
 
 @Component({
   selector: "app-navbar",
@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   private toggleButton: any;
   private sidebarVisible: boolean;
 
-  user: User = new User("JosedaSilva");
+  user: User;
 
   public isCollapsed = true;
 
@@ -28,7 +28,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     location: Location,
     private element: ElementRef,
     private router: Router,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private userService: UserService
   ) {
     this.location = location;
     this.sidebarVisible = false;
@@ -45,6 +46,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
      }
    };
   ngOnInit() {
+    this.user = this.userService.obterPorId(0);
     window.addEventListener("resize", this.updateColor);
     this.listTitles = ROUTES.filter(listTitle => listTitle);
     const navbar: HTMLElement = this.element.nativeElement;
@@ -196,5 +198,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(){
      window.removeEventListener("resize", this.updateColor);
+  }
+
+  profile(){
+    this.router.navigate(["/user"]);
   }
 }

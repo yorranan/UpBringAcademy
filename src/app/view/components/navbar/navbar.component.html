@@ -77,7 +77,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <h6>{{user.name}}</h6>
+          {{user.name}}
         </li>
         <li class=" nav-item" ngbDropdown>
           <a
@@ -92,7 +92,7 @@
           </a>
           <ul class=" dropdown-navbar" ngbDropdownMenu>
             <li class=" nav-link">
-              <a class=" nav-item" href="javascript:void(0)" ngbDropdownItem>
+              <a (click)="profile()" class=" nav-item" href="javascript:void(0)" ngbDropdownItem>
                 Profile
               </a>
             </li>
