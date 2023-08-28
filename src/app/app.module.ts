@@ -3,34 +3,27 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SignInComponent } from './components/sign-in/sign-in.component';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { AuthComponent } from './components/auth/auth.component';
-import { SettingsComponent } from './components/auth/settings/settings.component';
-import { GratificationComponent } from './components/auth/gratification/gratification.component';
-import { TaskComponent } from './components/auth/task/task.component';
-import { UserComponent } from './components/auth/user/user.component';
-import { SessionComponent } from './components/session/session.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { FooterComponent } from './view/components/footer/footer.component';
+import { NavbarComponent } from './view/components/navbar/navbar.component';
+import { SidebarComponent } from './view/components/sidebar/sidebar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
+
+import { DashboardComponent } from './view/pages/dashboard/dashboard.component';
+import { TaskComponent } from './view/pages/task/task/task.component';
+import { UserComponent } from './view/pages/user/user/user.component';
+import { GratificationComponent } from './view/pages/gratification/gratification/gratification.component';
+import UserService from 'src/app/model/service/UserService';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignInComponent,
-    SignUpComponent,
-    DashboardComponent,
-    SettingsComponent,
-    GratificationComponent,
-    TaskComponent,
-    UserComponent,
-    SessionComponent,
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
+    DashboardComponent,
+    TaskComponent,
+    UserComponent,
+    GratificationComponent,
 
   ],
   imports: [
@@ -38,7 +31,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     AppRoutingModule,
     NgbModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

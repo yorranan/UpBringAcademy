@@ -149,6 +149,10 @@
 
 .navbar-nav li{
   padding: 0 10px;
+  flex:content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   a{
     color: $white;
   }
