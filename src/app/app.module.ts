@@ -28,6 +28,7 @@ import { RegisterComponent } from './view/pages/authentication/register/register
     GratificationComponent,
     LoginComponent,
     RegisterComponent,
+
   ],
   imports: [
     BrowserModule,
