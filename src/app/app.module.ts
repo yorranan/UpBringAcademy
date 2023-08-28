@@ -24,6 +24,7 @@ import UserService from 'src/app/model/service/UserService';
     TaskComponent,
     UserComponent,
     GratificationComponent,
+
   ],
   imports: [
     BrowserModule,
