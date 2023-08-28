@@ -59,8 +59,9 @@
 @import "black-dashboard/bootstrap/carousel";
 @import "black-dashboard/bootstrap/utilities";
 @import "black-dashboard/bootstrap/print";
-@import "~bootstrap-icons/font/bootstrap-icons.css";
-@import "~bootstrap/dist/css/bootstrap.css";
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+//@import "~bootstrap-icons/font/bootstrap-icons.css";
+//@import "~bootstrap/dist/css/bootstrap.css";
 
  // Custom components
 
