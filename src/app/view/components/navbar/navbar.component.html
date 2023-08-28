@@ -25,19 +25,7 @@
     </button>
     <div class=" navbar-collapse" [ngbCollapse]="isCollapsed" id="navigation">
       <ul class=" navbar-nav ml-auto">
-        <li class=" search-bar input-group">
-          <button
-            class=" btn btn-link"
-            data-target="#searchModal"
-            data-toggle="modal"
-            (click)="open(content)"
-            id="search-button"
-          >
-            <i class="bi bi-search"> </i>
-            <span class=" d-lg-none d-md-block"> Search </span>
-          </button>
-        </li>
-        <li class=" nav-item" ngbDropdown>
+        <!--<li class=" nav-item" ngbDropdown>
           <a
             class=" nav-link"
             data-toggle="dropdown"
@@ -75,7 +63,7 @@
               </a>
             </li>
           </ul>
-        </li>
+        </li>-->
         <li class="nav-item">
           {{user.name}}
         </li>

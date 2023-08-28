@@ -1,8 +1,10 @@
+import Child from "./UserChild";
+
 export default class User{
     private _id: number;
-    private _admin: boolean;
     private _name: string;
     private _email: string;
+    private _age: Date;
 
     constructor(name: string){
         this._name = name;
@@ -14,14 +16,6 @@ export default class User{
 
     set id(id: number){
         this._id = id;
-    }
-
-    get admin(): boolean{
-        return this._admin;
-    }
-
-    set admin(admin: boolean){
-        this._admin = admin;
     }
 
     get name(): string{
@@ -38,6 +32,14 @@ export default class User{
 
     set email(email: string){
         this._email = email;
+    }
+
+    get age():Date{
+        return this._age;
+    }
+
+    set age(age: Date){
+        this._age = age;
     }
 
 }
