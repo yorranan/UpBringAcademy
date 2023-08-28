@@ -13,6 +13,8 @@ import { TaskComponent } from './view/pages/task/task/task.component';
 import { UserComponent } from './view/pages/user/user/user.component';
 import { GratificationComponent } from './view/pages/gratification/gratification/gratification.component';
 import UserService from 'src/app/model/service/UserService';
+import { LoginComponent } from './view/pages/authentication/login/login.component';
+import { RegisterComponent } from './view/pages/authentication/register/register.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import UserService from 'src/app/model/service/UserService';
     TaskComponent,
     UserComponent,
     GratificationComponent,
+    LoginComponent,
+    RegisterComponent,
 
   ],
   imports: [
