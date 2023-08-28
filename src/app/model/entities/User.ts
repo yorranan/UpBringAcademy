@@ -1,5 +1,3 @@
-import Child from "./UserChild";
-
 export default class User{
     private _id: number;
     private _name: string;
