@@ -1,4 +1,5 @@
 import UserParent from "./UserParent";
+import DateTimeConverter from "../util/DateTimeConverter";
 
 export default class Task{
     private _id: number;
@@ -73,4 +74,13 @@ export default class Task{
         this._userParent = userParent;
     }
 
+    getBeginDateTimeConvert(): string{
+        const converter = new DateTimeConverter();
+        return converter.convert(this._beginDateTime);
+    }
+
+    getEndDateTimeConvert(): string{
+        const conversor = new DateTimeConverter();
+        return conversor.convert(this._endDateTime);
+    }
 }
