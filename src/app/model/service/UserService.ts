@@ -12,6 +12,6 @@ export default class UserService{
     }
 
     obterPorId(id: number): User{
-        return this._usuarios[id];
+        return this._usuarios[id-1];
     }
 }

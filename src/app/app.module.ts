@@ -15,6 +15,7 @@ import { GratificationComponent } from './view/pages/gratification/gratification
 import UserService from 'src/app/model/service/UserService';
 import { LoginComponent } from './view/pages/authentication/login/login.component';
 import { RegisterComponent } from './view/pages/authentication/register/register.component';
+import TaskService from './model/service/TaskService';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { RegisterComponent } from './view/pages/authentication/register/register
     AppRoutingModule,
     NgbModule
   ],
-  providers: [UserService],
+  providers: [UserService, TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

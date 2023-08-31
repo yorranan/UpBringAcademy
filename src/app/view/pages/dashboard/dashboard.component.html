@@ -2,8 +2,25 @@
 <main class="main-panel">
     <app-navbar></app-navbar>
     <div class="content">
-        <div>
-
+        <div style="width: 45%;">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th class="text-center">#</th>
+                    <th>Tarefa</th>
+                    <th>Pontos</th>
+                    <th>Prazo</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let task of tasks">
+                  <tr>
+                    <td>1</td>
+                    <td>{{task.name}}</td>
+                    <td>{{task.points}}</td>
+                    <td>{{task.endDateTime.getDay()}}/{{task.endDateTime.getMonth()}}/{{task.endDateTime.getFullYear()}} {{task.endDateTime.getHours()}}:{{task.endDateTime.getMinutes()}}</td>
+                  </tr>
+                </tbody>
+              </table>
         </div>
     </div>
     <app-footer></app-footer>

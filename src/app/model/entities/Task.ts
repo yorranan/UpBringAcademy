@@ -9,6 +9,14 @@ export default class Task{
     private _endDateTime: Date;
     private _userParent: UserParent;
 
+    constructor(name: string, description: string, points: number, beginDateTime: Date, endDateTime: Date){
+        this._name = name;
+        this._description = description;
+        this._points = points;
+        this._beginDateTime = beginDateTime;
+        this._endDateTime = endDateTime;
+    }
+
     get id(): number{
         return this._id;
     }

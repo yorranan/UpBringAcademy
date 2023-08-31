@@ -1,10 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import Task from 'src/app/model/entities/Task';
+import TaskService from 'src/app/model/service/TaskService';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
+
+  tasks: Task[];
+  
+  constructor(private taskService: TaskService){
+    this.tasks = taskService.obterTodos();
+  }
+  
+  ngOnInit(): void {
+    this.tasks = this.taskService.obterTodos();
+  }
 
 }
