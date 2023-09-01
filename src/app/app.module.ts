@@ -15,6 +15,11 @@ import { GratificationComponent } from './view/pages/gratification/gratification
 import UserService from 'src/app/model/service/UserService';
 import { LoginComponent } from './view/pages/authentication/login/login.component';
 import { RegisterComponent } from './view/pages/authentication/register/register.component';
+import TaskService from './model/service/TaskService';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -33,9 +38,12 @@ import { RegisterComponent } from './view/pages/authentication/register/register
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore())
   ],
-  providers: [UserService],
+  providers: [UserService, TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
