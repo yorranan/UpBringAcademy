@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "UpBringAcademy",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}
