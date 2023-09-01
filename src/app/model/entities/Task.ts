@@ -74,12 +74,12 @@ export default class Task{
         this._userParent = userParent;
     }
 
-    getBeginDateTimeConvert(): string{
+    getBeginDateTimeConverted(): string{
         const converter = new DateTimeConverter();
         return converter.convert(this._beginDateTime);
     }
 
-    getEndDateTimeConvert(): string{
+    getEndDateTimeConverted(): string{
         const conversor = new DateTimeConverter();
         return conversor.convert(this._endDateTime);
     }

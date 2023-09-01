@@ -13,11 +13,11 @@
                   </tr>
                 </thead>
                 <tbody *ngFor="let task of tasks">
-                  <tr>
+                  <tr *ngIf>
                     <td>1</td>
                     <td>{{task.name}}</td>
                     <td>{{task.points}}</td>
-                    <td>{{task.getEndDateTimeConvert()}}</td>
+                    <td>{{task.getEndDateTimeConverted()}}</td>
                   </tr>
                 </tbody>
               </table>

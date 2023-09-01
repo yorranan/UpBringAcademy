@@ -16,6 +16,10 @@ import UserService from 'src/app/model/service/UserService';
 import { LoginComponent } from './view/pages/authentication/login/login.component';
 import { RegisterComponent } from './view/pages/authentication/register/register.component';
 import TaskService from './model/service/TaskService';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,10 @@ import TaskService from './model/service/TaskService';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore())
   ],
   providers: [UserService, TaskService],
   bootstrap: [AppComponent]
