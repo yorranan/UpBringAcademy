@@ -1,4 +1,4 @@
-export default class User{
+export default class UserResponseDTO{
     private _id: number;
     private _name: string;
     private _email: string;
