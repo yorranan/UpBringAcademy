@@ -6,6 +6,8 @@ import { DashboardComponent } from "./view/pages/dashboard/dashboard.component";
 import { TaskComponent } from "./view/pages/task/task/task.component";
 import { UserComponent } from "./view/pages/user/user/user.component";
 import { GratificationComponent } from "./view/pages/gratification/gratification/gratification.component";
+import { LoginComponent } from "./view/pages/authentication/login/login.component";
+import { RegisterComponent } from "./view/pages/authentication/register/register.component";
 
 
 const routes: Routes = [
@@ -24,7 +26,16 @@ const routes: Routes = [
   {
     path: 'gratification',
     component: GratificationComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
   }
+
 ];
 
 @NgModule({

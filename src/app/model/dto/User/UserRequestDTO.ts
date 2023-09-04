@@ -1,19 +1,8 @@
-export default class User{
-    private _id: number;
+export default class UserRequestDTO{
     private _name: string;
     private _email: string;
     private _password: string;
     private _age: Date;
-    private _registerDate: Date;
-    private _inactivateDate: Date;
-
-    get id(): number{
-        return this._id;
-    }
-
-    set id(id: number){
-        this._id = id;
-    }
 
     get name(): string{
         return this._name;
@@ -45,21 +34,5 @@ export default class User{
 
     set age(age: Date){
         this._age = age;
-    }
-
-    get registerDate(): Date{
-        return this._registerDate;
-    }
-
-    set registerDate(registerDate: Date){
-        this._registerDate = registerDate;
-    }
-
-    get inactivateDate(): Date{
-        return this._inactivateDate;
-    }
-
-    set inactivateDate(inactivateDate: Date){
-        this._inactivateDate = inactivateDate;
     }
 }
