@@ -12,6 +12,11 @@ import { RegisterComponent } from "./view/pages/authentication/register/register
 
 const routes: Routes = [
   {
+    path: "",
+    redirectTo: "login",
+    pathMatch: "full"
+  },
+  {
     path: 'dashboard',
     component: DashboardComponent
   },
