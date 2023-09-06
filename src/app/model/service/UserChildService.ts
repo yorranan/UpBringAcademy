@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from "@angular/fire/compat/firestore";
 import UserChild from '../entities/UserChild';
 import ICRUDService from './ICRUDService'
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Injectable({
     providedIn: 'root'
@@ -9,12 +10,15 @@ import ICRUDService from './ICRUDService'
 export default class UserChildService implements ICRUDService<UserChild>{
     private PATH: string = 'users'
 
-    constructor(private firestore: AngularFirestore) { }
+    constructor(private firestore: AngularFirestore, private auth: AngularFireAuth) { }
 
     create(user: UserChild) {
-        user.registerDate = new Date();
-        user.inactivateDate = null;
-        this.firestore.collection(this.PATH).add(mapper(user));
+      user.registerDate = new Date();
+      user.inactivateDate = null;
+      return this.auth.createUserWithEmailAndPassword(user.email, user.password)
+      .then((credendial) =>{
+        return this.firestore.collection(this.PATH).doc(credendial.user.uid).set(mapper(user));
+      });
     }
 
     read(id: string){

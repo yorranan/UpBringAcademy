@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
   cadastrar() {
     const userParent = new UserParent;
     userParent.name = this.name;
-    userParent.age = this.birthDate;
+    userParent.birthDate = this.birthDate;
     userParent.email = this.email;
     userParent.password = this.password;
     this.userParentService.create(userParent);
