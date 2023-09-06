@@ -36,7 +36,7 @@ function mapper(user: User){
     name: user.name,
     email: user.email,
     password: user.password,
-    age: user.age,
+    birthDate: user.birthDate,
     registerDate: user.registerDate,
     inactivateDate: user.inactivateDate
   }

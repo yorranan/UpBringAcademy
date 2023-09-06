@@ -3,7 +3,7 @@ export default class User{
     private _name: string;
     private _email: string;
     private _password: string;
-    private _age: Date;
+    private _birthDate: Date;
     private _registerDate: Date;
     private _inactivateDate: Date;
 
@@ -39,12 +39,12 @@ export default class User{
         this._password = password;
     }
 
-    get age():Date{
-        return this._age;
+    get birthDate():Date{
+        return this._birthDate;
     }
 
-    set age(age: Date){
-        this._age = age;
+    set birthDate(birthDate: Date){
+        this._birthDate = birthDate;
     }
 
     get registerDate(): Date{

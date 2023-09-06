@@ -1,14 +1,17 @@
 import UserParent from "./UserParent";
+import UserChild from "./UserChild";
 import DateTimeConverter from "../util/DateTimeConverter";
 
 export default class Task{
-    private _id: number;
+    private _id: string;
     private _name: string;
     private _description: string;
     private _points: number;
     private _beginDateTime: Date;
     private _endDateTime: Date;
-    private _userParent: UserParent;
+    private _realizationDateTime: Date;
+    private _parent: UserParent;
+    private _child: UserChild;
 
     constructor(name: string, description: string, points: number, beginDateTime: Date, endDateTime: Date){
         this._name = name;
@@ -18,11 +21,11 @@ export default class Task{
         this._endDateTime = endDateTime;
     }
 
-    get id(): number{
+    get id(): string{
         return this._id;
     }
 
-    set id(id: number){
+    set id(id: string){
         this._id = id;
     }
 
@@ -66,12 +69,28 @@ export default class Task{
         this._endDateTime = endDateTime;
     }
 
-    get userParent(): UserParent{
-        return this._userParent;
+    get realizationDateTime(): Date{
+        return this._realizationDateTime;
     }
 
-    set userParent(userParent: UserParent){
-        this._userParent = userParent;
+    set realizationDateTime(realizationDateTime: Date){
+        this._realizationDateTime = realizationDateTime;
+    }
+
+    get parent(): UserParent{
+        return this._parent;
+    }
+
+    set parent(parent: UserParent){
+        this._parent = parent;
+    }
+
+    get child(): UserChild{
+        return this._child;
+    }
+
+    set child(child: UserChild){
+        this._child = child;
     }
 
     getBeginDateTimeConverted(): string{
@@ -80,7 +99,7 @@ export default class Task{
     }
 
     getEndDateTimeConverted(): string{
-        const conversor = new DateTimeConverter();
-        return conversor.convert(this._endDateTime);
+        const converter = new DateTimeConverter();
+        return converter.convert(this._endDateTime);
     }
 }

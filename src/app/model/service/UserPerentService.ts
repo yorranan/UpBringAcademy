@@ -37,7 +37,7 @@ function mapper(user: UserParent){
       name: user.name,
       email: user.email,
       password: user.password,
-      age: user.age,
+      birthDate: user.birthDate,
       registerDate: user.registerDate,
       inactivateDate: user.inactivateDate,
       childrenId: user.children.map(child => child.id)
