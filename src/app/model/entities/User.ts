@@ -1,5 +1,5 @@
 export default class User{
-    private _id: number;
+    private _id: string;
     private _name: string;
     private _email: string;
     private _password: string;
@@ -7,11 +7,11 @@ export default class User{
     private _registerDate: Date;
     private _inactivateDate: Date;
 
-    get id(): number{
+    get id(): string{
         return this._id;
     }
 
-    set id(id: number){
+    set id(id: string){
         this._id = id;
     }
 
