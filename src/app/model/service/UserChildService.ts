@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from "@angular/fire/compat/firestore";
-import User from "../entities/User";
-import ICRUDService from "./ICRUDService";
+import UserChild from '../entities/UserChild';
+import ICRUDService from './ICRUDService'
 
 @Injectable({
     providedIn: 'root'
 })
-export default class UserService implements ICRUDService<User>{
+export default class UserChildService implements ICRUDService<UserChild>{
     private PATH: string = 'user'
 
     constructor(private firestore: AngularFirestore) { }
 
-    create(user: User) {
+    create(user: UserChild) {
         user.registerDate = new Date();
         user.inactivateDate = null;
         this.firestore.collection(this.PATH).add(mapper(user));
@@ -21,23 +21,25 @@ export default class UserService implements ICRUDService<User>{
         return this.firestore.collection(this.PATH).doc(id).snapshotChanges();
     }
 
-    update(id: string, user: User) {
+    update(id: string, user: UserChild) {
       return this.firestore.collection(this.PATH).doc(id).update(mapper(user));
     }
     
-    delete(id: string, user: User) {
+    delete(id: string, user: UserChild) {
       user.inactivateDate = new Date()
       return this.firestore.collection(this.PATH).doc(id).update(mapper(user));
     }
 }
 
-function mapper(user: User){
+function mapper(user: UserChild){
   return {
     name: user.name,
     email: user.email,
     password: user.password,
     age: user.age,
     registerDate: user.registerDate,
-    inactivateDate: user.inactivateDate
+    inactivateDate: user.inactivateDate,
+    points: user.points,
+    parentId: user.parent.id
   }
 }

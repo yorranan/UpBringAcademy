@@ -5,6 +5,10 @@ import { Router } from "@angular/router";
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import User from "src/app/model/entities/User";
 import UserService from "src/app/model/service/UserService";
+import UserParentService from "src/app/model/service/UserPerentService";
+import UserChildService from "src/app/model/service/UserChildService";
+import UserChild from "src/app/model/entities/UserChild";
+import UserParent from "src/app/model/entities/UserParent";
 
 @Component({
   selector: "app-navbar",
@@ -18,6 +22,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   private toggleButton: any;
   private sidebarVisible: boolean;
   user: User;
+  userParent: UserParent;
+  userChild: UserChild;
 
   public isCollapsed = true;
 
@@ -28,7 +34,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private element: ElementRef,
     private router: Router,
     private modalService: NgbModal,
-    private userService: UserService
+    private userService: UserService,
+    private userParentService: UserParentService,
+    private userChildService: UserChildService
   ) {
     this.location = location;
     this.sidebarVisible = false;
@@ -38,6 +46,18 @@ export class NavbarComponent implements OnInit, OnDestroy {
         ... res.payload.data() as any
       } as User;
     });
+    this.userParentService.read("IO3GN84r13Sm5rajAwqb").subscribe(res =>{
+      this.userParent = {
+        id: res.payload.id,
+        ... res.payload.data() as any
+      } as UserParent;
+    });
+    this.userChildService.read("JN6fcSZysBQpxgUlITEX").subscribe(res =>{
+      this.userChild = {
+        id: res.payload.id,
+        ... res.payload.data() as any
+      } as UserChild;
+    })
   }
   // function that adds color white/transparent to the navbar on resize (this is for the collapse)
    updateColor = () => {
@@ -205,6 +225,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   profile(){
-    this.router.navigate(["/user"]);
+    
   }
 }
