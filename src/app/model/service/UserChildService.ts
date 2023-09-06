@@ -7,7 +7,7 @@ import ICRUDService from './ICRUDService'
     providedIn: 'root'
 })
 export default class UserChildService implements ICRUDService<UserChild>{
-    private PATH: string = 'user'
+    private PATH: string = 'users'
 
     constructor(private firestore: AngularFirestore) { }
 

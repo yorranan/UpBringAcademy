@@ -7,18 +7,18 @@ import ICRUDService from "./ICRUDService";
     providedIn: 'root'
 })
 export default class UserService implements ICRUDService<User>{
-    private PATH: string = 'user'
+    private PATH: string = 'users'
 
     constructor(private firestore: AngularFirestore) { }
 
     create(user: User) {
-        user.registerDate = new Date();
-        user.inactivateDate = null;
-        this.firestore.collection(this.PATH).add(mapper(user));
+      user.registerDate = new Date();
+      user.inactivateDate = null;
+      return this.firestore.collection(this.PATH).add(mapper(user));
     }
 
     read(id: string){
-        return this.firestore.collection(this.PATH).doc(id).snapshotChanges();
+      return this.firestore.collection(this.PATH).doc(id).snapshotChanges();
     }
 
     update(id: string, user: User) {

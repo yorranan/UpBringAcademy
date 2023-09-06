@@ -9,7 +9,7 @@ export default class Task{
     private _points: number;
     private _beginDateTime: Date;
     private _endDateTime: Date;
-    private _realizationDateTime: Date;
+    private _conclusionDateTime: Date;
     private _parent: UserParent;
     private _child: UserChild;
 
@@ -69,12 +69,12 @@ export default class Task{
         this._endDateTime = endDateTime;
     }
 
-    get realizationDateTime(): Date{
-        return this._realizationDateTime;
+    get conclusionDateTime(): Date{
+        return this._conclusionDateTime;
     }
 
-    set realizationDateTime(realizationDateTime: Date){
-        this._realizationDateTime = realizationDateTime;
+    set conclusionDateTime(conclusionDateTime: Date){
+        this._conclusionDateTime = conclusionDateTime;
     }
 
     get parent(): UserParent{

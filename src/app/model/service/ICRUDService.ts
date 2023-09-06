@@ -1,4 +1,4 @@
-export default interface Service<Entity>{
+export default interface ICRUDService<Entity>{
 
     create(entity: Entity);
 
@@ -7,4 +7,8 @@ export default interface Service<Entity>{
     update(id: string, entity: Entity);
 
     delete(id: string, entity?: Entity);
+}
+
+function mapper(){
+    
 }

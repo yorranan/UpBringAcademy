@@ -1,30 +1,43 @@
+import { Injectable } from "@angular/core";
 import Task from "../entities/Task";
+import ICRUDService from "./ICRUDService";
+import { AngularFirestore } from "@angular/fire/compat/firestore";
 
-export default class TaskService{
-    private _tasks: Task[] = [];
+@Injectable({
+    providedIn: 'root'
+})
+export default class TaskService implements ICRUDService<Task>{
+    private PATH: string = 'tasks'
 
-    constructor(){
-        this._tasks.push(new Task(
-        "Tirar o Lixo",
-        "Levar o lixo da cozinha para fora",
-        100,
-        new Date('2023-09-01T15:30'),
-        new Date('2023-09-01T17:30')
-        ));
-        this._tasks.push(new Task(
-            "Andar com o cahcorro",
-            "Andar com o Maxiel",
-            50,
-            new Date('2023-09-02T14:30'),
-            new Date('2023-09-02T17:30')
-        ));
+    constructor(private firestore: AngularFirestore){}
+
+    create(task: Task){
+        task.conclusionDateTime = null;
+        return this.firestore.collection(this.PATH).add(mapper(task));
     }
 
-    obterTodos(): Task[]{
-        return this._tasks;
+    read(id: string){
+        return this.firestore.collection(this.PATH).doc(id).snapshotChanges();
     }
 
-    obterPorId(id: number): Task{
-        return this._tasks[id-1];
+    update(id: string, task: Task){
+        return this.firestore.collection(this.PATH).doc(id).update(mapper(task))
+    }
+
+    delete(id: string){
+        return this.firestore.collection(this.PATH).doc(id).delete()
+    }
+}
+
+function mapper(task: Task){
+    return{
+        name: task.name,
+        description: task.desciption,
+        points: task.points,
+        begindDateTime: task.beginDateTime,
+        endDateTime: task.endDateTime,
+        conclusionDateTime: task.conclusionDateTime,
+        parentId: task.parent.id,
+        childId: task.child.id
     }
 }
