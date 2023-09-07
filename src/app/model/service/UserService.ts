@@ -16,8 +16,8 @@ export default class UserService implements ICRUDService<User>{
       user.registerDate = new Date();
       user.inactivateDate = null;
       return this.auth.createUserWithEmailAndPassword(user.email, user.password)
-      .then((credendial) =>{
-        return this.firestore.collection(this.PATH).doc(credendial.user.uid).set(mapper(user));
+      .then((credential) =>{
+        return this.firestore.collection(this.PATH).doc(credential.user.uid).set(mapper(user));
       });
     }
 
