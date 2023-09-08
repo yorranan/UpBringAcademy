@@ -1,5 +1,6 @@
 export default class User{
     private _id: string;
+    private _admin: boolean;
     private _name: string;
     private _email: string;
     private _password: string;
@@ -13,6 +14,14 @@ export default class User{
 
     set id(id: string){
         this._id = id;
+    }
+
+    get admin(): boolean{
+        return this._admin;
+    }
+
+    set admin(admin: boolean){
+        this._admin = admin;
     }
 
     get name(): string{

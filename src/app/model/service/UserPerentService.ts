@@ -13,9 +13,10 @@ export default class UserParentService implements ICRUDService<UserParent>{
     constructor(private firestore: AngularFirestore, private auth: AngularFireAuth) { }
 
     create(user: UserParent) {
+      user.admin = true;
       user.registerDate = new Date();
       user.inactivateDate = null;
-      user.children = [];
+      user.childrenId = [];
       return this.auth.createUserWithEmailAndPassword(user.email, user.password)
       .then((credendial) =>{
         return this.firestore.collection(this.PATH).doc(credendial.user.uid).set(mapper(user));
@@ -39,11 +40,12 @@ export default class UserParentService implements ICRUDService<UserParent>{
 function mapper(user: UserParent){
     return {
       name: user.name,
+      admin: user.admin,
       email: user.email,
       password: user.password,
       birthDate: user.birthDate,
       registerDate: user.registerDate,
       inactivateDate: user.inactivateDate,
-      childrenId: user.children.map(child => child.id)
+      childrenId: user.childrenId
     }
   }

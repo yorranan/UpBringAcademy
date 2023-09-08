@@ -44,6 +44,6 @@ function mapper(user: UserChild){
     registerDate: user.registerDate,
     inactivateDate: user.inactivateDate,
     points: user.points,
-    parentId: user.parent.id
+    parentId: user.parentId
   }
 }

@@ -68,15 +68,15 @@ export default class Gratification{
 }
 
 class RedeemDateTime{
-    private _child: UserChild;
+    private _childId: string;
     private _dateTime: Date;
 
-    get child(): UserChild{
-        return this._child;
+    get childId(): string{
+        return this._childId;
     }
 
-    set child(child: UserChild){
-        this._child = child;
+    set childId(childId: string){
+        this._childId = childId;
     }
 
     get dateTime(): Date{

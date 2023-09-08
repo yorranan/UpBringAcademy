@@ -2,13 +2,13 @@ import UserChild from "./UserChild";
 import User from "./User";
 
 export default class UserParent extends User{
-    private _children: UserChild[];
+    private _childrenId: string[];
 
-    get children(): UserChild[]{
-        return this._children;
+    get childrenId(): string[]{
+        return this._childrenId;
     }
 
-    set children(children: UserChild[]){
-        this._children = children;
+    set childrenId(childrenId: string[]){
+        this._childrenId = childrenId;
     }
 }

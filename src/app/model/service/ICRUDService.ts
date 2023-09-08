@@ -8,7 +8,3 @@ export default interface ICRUDService<Entity>{
 
     delete(id: string, entity?: Entity);
 }
-
-function mapper(){
-    
-}

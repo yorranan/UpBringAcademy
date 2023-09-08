@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import AuthService from 'src/app/model/service/AuthService';
 
 @Component({
@@ -10,7 +11,7 @@ export class LoginComponent implements OnInit {
   public email: string;
   public password: string;
 
-  constructor(private authService: AuthService){}
+  constructor(private authService: AuthService, private router: Router, private ngZone: NgZone){}
 
   ngOnInit(): void {
       
@@ -19,5 +20,4 @@ export class LoginComponent implements OnInit {
   login(){
     this.authService.logIn(this.email, this.password);
   }
-  
 }

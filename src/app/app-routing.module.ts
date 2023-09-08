@@ -8,12 +8,14 @@ import { UserComponent } from "./view/pages/user/user/user.component";
 import { GratificationComponent } from "./view/pages/gratification/gratification/gratification.component";
 import { LoginComponent } from "./view/pages/authentication/login/login.component";
 import { RegisterComponent } from "./view/pages/authentication/register/register.component";
+import { AuthGuard }  from "./guard/auth.guard";
 
 
 const routes: Routes = [
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'user',

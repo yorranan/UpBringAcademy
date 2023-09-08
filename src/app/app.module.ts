@@ -12,7 +12,6 @@ import { DashboardComponent } from './view/pages/dashboard/dashboard.component';
 import { TaskComponent } from './view/pages/task/task/task.component';
 import { UserComponent } from './view/pages/user/user/user.component';
 import { GratificationComponent } from './view/pages/gratification/gratification/gratification.component';
-import UserService from 'src/app/model/service/UserService';
 import { LoginComponent } from './view/pages/authentication/login/login.component';
 import { RegisterComponent } from './view/pages/authentication/register/register.component';
 import TaskService from './model/service/TaskService';
@@ -24,6 +23,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { FormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AuthGuard } from './guard/auth.guard';
 
 @NgModule({
   declarations: [
@@ -47,8 +47,9 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
+    AppRoutingModule
   ],
-  providers: [UserService, TaskService],
+  providers: [TaskService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
