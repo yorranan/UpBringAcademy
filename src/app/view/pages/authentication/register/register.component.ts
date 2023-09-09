@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import UserParent from 'src/app/model/entities/UserParent';
+import AuthService from 'src/app/model/service/AuthService';
 import UserParentService from 'src/app/model/service/UserPerentService';
 
 @Component({
@@ -13,7 +15,7 @@ export class RegisterComponent implements OnInit {
   public email: string;
   public password: string;
 
-  constructor(private userParentService: UserParentService){}
+  constructor(private router: Router,private userParentService: UserParentService, private authService: AuthService){}
 
   ngOnInit(): void {
   
@@ -22,9 +24,10 @@ export class RegisterComponent implements OnInit {
   cadastrar() {
     const userParent = new UserParent;
     userParent.name = this.name;
-    userParent.age = this.birthDate;
+    userParent.birthDate = this.birthDate;
     userParent.email = this.email;
     userParent.password = this.password;
     this.userParentService.create(userParent);
+    this.router.navigate(['login']);
   }
 }

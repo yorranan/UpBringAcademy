@@ -8,25 +8,10 @@ import { UserComponent } from "./view/pages/user/user/user.component";
 import { GratificationComponent } from "./view/pages/gratification/gratification/gratification.component";
 import { LoginComponent } from "./view/pages/authentication/login/login.component";
 import { RegisterComponent } from "./view/pages/authentication/register/register.component";
+import { AuthGuard }  from "./guard/auth.guard";
 
 
 const routes: Routes = [
-  {
-    path: 'dashboard',
-    component: DashboardComponent
-  },
-  {
-    path: 'user',
-    component: UserComponent
-  },
-  {
-    path: 'task',
-    component: TaskComponent
-  },
-  {
-    path: 'gratification',
-    component: GratificationComponent
-  },
   {
     path: 'login',
     component: LoginComponent
@@ -34,8 +19,27 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'user',
+    component: UserComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'task',
+    component: TaskComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'gratification',
+    component: GratificationComponent,
+    canActivate: [AuthGuard]
   }
-
 ];
 
 @NgModule({

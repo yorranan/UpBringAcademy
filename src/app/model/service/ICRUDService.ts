@@ -1,4 +1,4 @@
-export default interface Service<Entity>{
+export default interface ICRUDService<Entity>{
 
     create(entity: Entity);
 
