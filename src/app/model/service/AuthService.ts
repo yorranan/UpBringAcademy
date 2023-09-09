@@ -8,7 +8,6 @@ import { Router } from "@angular/router";
 })
 export default class AuthService{
     userData: any;
-    admin: boolean;
 
     constructor(private router: Router, private firebaseAuth: AngularFireAuth, private firastore: AngularFirestore, private ngZone: NgZone){
         this.firebaseAuth.authState.subscribe(user => {

@@ -37,7 +37,6 @@ function mapper(task: Task){
         begindDateTime: task.beginDateTime,
         endDateTime: task.endDateTime,
         conclusionDateTime: task.conclusionDateTime,
-        parentId: task.parent.id,
-        childId: task.child.id
+        parentId: task.parentId,
     }
 }

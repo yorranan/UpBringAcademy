@@ -1,5 +1,5 @@
 import UserParent from "./UserParent";
-import UserChild from "./UserChild";
+import DateReference from "../util/DateReference";
 
 export default class Gratification{
     private _id: string;
@@ -8,7 +8,7 @@ export default class Gratification{
     private _points: number;
     private _quantity: number;
     private _parent: UserParent;
-    private _redeemDateTime: RedeemDateTime[];
+    private _redeemDateTime: DateReference[];
 
     get id(): string{
         return this._id;
@@ -58,32 +58,11 @@ export default class Gratification{
         this._parent = parent;
     }
 
-    get redeemDateTime(): RedeemDateTime[]{
+    get redeemDateTime(): DateReference[]{
         return this._redeemDateTime;
     }
 
-    set redeemDateTime(redeemDateTime: RedeemDateTime[]){
+    set redeemDateTime(redeemDateTime: DateReference[]){
         this._redeemDateTime = redeemDateTime;
-    }
-}
-
-class RedeemDateTime{
-    private _childId: string;
-    private _dateTime: Date;
-
-    get childId(): string{
-        return this._childId;
-    }
-
-    set childId(childId: string){
-        this._childId = childId;
-    }
-
-    get dateTime(): Date{
-        return this._dateTime;
-    }
-
-    set dateTime(dateTime: Date){
-        this._dateTime = dateTime;
     }
 }
