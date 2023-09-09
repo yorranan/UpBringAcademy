@@ -8,20 +8,13 @@ import { Router } from "@angular/router";
 })
 export default class AuthService{
     userData: any;
-    isLoggedIn: boolean;
 
     constructor(private router: Router, private firebaseAuth: AngularFireAuth, private firastore: AngularFirestore){
-        this.updateUser();
-        this.isLoggedIn = !!sessionStorage.getItem('user');
-    }
-
-    updateUser(){
         this.firebaseAuth.authState.subscribe(user => {
             if(user){
                 this.userData = user;
                 sessionStorage.setItem('user', JSON.stringify(this.userData));
                 JSON.parse(sessionStorage.getItem('user')!);
-                this.isLoggedIn = true;
             }else{
                 sessionStorage.setItem('user', null);
                 JSON.parse(sessionStorage.getItem('user')!);
@@ -29,9 +22,17 @@ export default class AuthService{
         });
     }
 
+    get isLoggedIn(): boolean{
+        if(this.userData){
+            return true;
+        }
+        return false;
+    }
+
     logIn(email: string, password: string){
         return this.firebaseAuth.signInWithEmailAndPassword(email, password).then(result =>{
-            this.updateUser();
+            this.userData = result.user;
+            sessionStorage.setItem('user', JSON.stringify(this.userData));
             this.router.navigate(['dashboard']);
         }).catch((error: any) =>{
             window.alert(error);
