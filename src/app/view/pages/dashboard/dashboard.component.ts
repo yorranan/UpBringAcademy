@@ -12,18 +12,17 @@ import UserService from 'src/app/model/service/UserService';
 export class DashboardComponent implements OnInit {
 
   tasks: Task[];
-  
+
   constructor(private taskService: TaskService, private userService: UserService){
 
   }
-  
+
   ngOnInit(): void {
     const user = new UserRequestDTO();
     user.name = "Lorenzo"
     user.email = "lm.pilati@gmail"
     user.password = "123456"
     user.age = new Date();
-    this.userService.create(user);
   }
 
 }
