@@ -9,6 +9,7 @@ import { GratificationComponent } from "./view/pages/gratification/gratification
 import { LoginComponent } from "./view/pages/authentication/login/login.component";
 import { RegisterComponent } from "./view/pages/authentication/register/register.component";
 import { AuthGuard }  from "./guard/auth.guard";
+import { UserEditComponent } from "./view/pages/user/user-edit/user-edit.component";
 
 
 const routes: Routes = [
@@ -23,12 +24,18 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
-    path: 'user',
+    path: 'user/:id',
     component: UserComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'edit',
+        component: UserEditComponent
+      }
+    ]
   },
   {
     path: 'task',

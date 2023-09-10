@@ -24,6 +24,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { FormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AuthGuard } from './guard/auth.guard';
+import { UserEditComponent } from './view/pages/user/user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { AuthGuard } from './guard/auth.guard';
     GratificationComponent,
     LoginComponent,
     RegisterComponent,
+    UserEditComponent,
   ],
   imports: [
     FormsModule,

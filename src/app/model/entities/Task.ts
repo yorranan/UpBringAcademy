@@ -1,4 +1,3 @@
-import DateTimeConverter from "../util/DateTimeConverter";
 import DateReference from "../util/DateReference";
 
 export default class Task{
@@ -81,15 +80,5 @@ export default class Task{
 
     set parent(parentId: string){
         this._parentId = parentId;
-    }
-
-    getBeginDateTimeConverted(): string{
-        const converter = new DateTimeConverter();
-        return converter.convert(this._beginDateTime);
-    }
-
-    getEndDateTimeConverted(): string{
-        const converter = new DateTimeConverter();
-        return converter.convert(this._endDateTime);
     }
 }

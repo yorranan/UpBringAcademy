@@ -1,5 +1,5 @@
 export default class DateTimeConverter{
-    convert(date: Date): string{
+    convertDataTime(date: Date): string{
         const today = new Date();
         const tomorrow = new Date()
         const yesterday = new Date()
@@ -15,5 +15,9 @@ export default class DateTimeConverter{
             return `Ontem ${date.getHours()}:${date.getMinutes()}`;
 
         return `${date.getDate()}/${(date.getMonth()+1)}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
+    }
+
+    convertDate(date: Date): string{
+        return `${date.getDate()}/${(date.getMonth()+1)}/${date.getFullYear()}`;
     }
 }
