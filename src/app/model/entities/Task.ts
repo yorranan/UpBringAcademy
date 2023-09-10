@@ -1,14 +1,15 @@
-import UserParent from "./UserParent";
 import DateTimeConverter from "../util/DateTimeConverter";
+import DateReference from "../util/DateReference";
 
 export default class Task{
-    private _id: number;
+    private _id: string;
     private _name: string;
     private _description: string;
     private _points: number;
     private _beginDateTime: Date;
     private _endDateTime: Date;
-    private _userParent: UserParent;
+    private _parentId: string;
+    private _conclusionDateTime: DateReference[];
 
     constructor(name: string, description: string, points: number, beginDateTime: Date, endDateTime: Date){
         this._name = name;
@@ -18,11 +19,11 @@ export default class Task{
         this._endDateTime = endDateTime;
     }
 
-    get id(): number{
+    get id(): string{
         return this._id;
     }
 
-    set id(id: number){
+    set id(id: string){
         this._id = id;
     }
 
@@ -66,12 +67,20 @@ export default class Task{
         this._endDateTime = endDateTime;
     }
 
-    get userParent(): UserParent{
-        return this._userParent;
+    get conclusionDateTime(): DateReference[]{
+        return this._conclusionDateTime;
     }
 
-    set userParent(userParent: UserParent){
-        this._userParent = userParent;
+    set conclusionDateTime(conclusionDateTime: DateReference[]){
+        this._conclusionDateTime = conclusionDateTime;
+    }
+
+    get parentId(): string{
+        return this._parentId;
+    }
+
+    set parent(parentId: string){
+        this._parentId = parentId;
     }
 
     getBeginDateTimeConverted(): string{
@@ -80,7 +89,7 @@ export default class Task{
     }
 
     getEndDateTimeConverted(): string{
-        const conversor = new DateTimeConverter();
-        return conversor.convert(this._endDateTime);
+        const converter = new DateTimeConverter();
+        return converter.convert(this._endDateTime);
     }
 }

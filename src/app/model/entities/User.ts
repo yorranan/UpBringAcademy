@@ -1,18 +1,27 @@
 export default class User{
-    private _id: number;
+    private _id: string;
+    private _admin: boolean;
     private _name: string;
     private _email: string;
     private _password: string;
-    private _age: Date;
+    private _birthDate: Date;
     private _registerDate: Date;
     private _inactivateDate: Date;
 
-    get id(): number{
+    get id(): string{
         return this._id;
     }
 
-    set id(id: number){
+    set id(id: string){
         this._id = id;
+    }
+
+    get admin(): boolean{
+        return this._admin;
+    }
+
+    set admin(admin: boolean){
+        this._admin = admin;
     }
 
     get name(): string{
@@ -39,12 +48,12 @@ export default class User{
         this._password = password;
     }
 
-    get age():Date{
-        return this._age;
+    get birthDate():Date{
+        return this._birthDate;
     }
 
-    set age(age: Date){
-        this._age = age;
+    set birthDate(birthDate: Date){
+        this._birthDate = birthDate;
     }
 
     get registerDate(): Date{

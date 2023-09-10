@@ -3,7 +3,7 @@ import UserParent from "./UserParent";
 
 export default class UserChild extends User{
     private _points: number;
-    private _parent: UserParent;
+    private _parentId: string;
     
     get points(): number{
         return this._points;
@@ -13,11 +13,11 @@ export default class UserChild extends User{
         this._points = points;
     }
 
-    get parent(): UserParent{
-        return this._parent;
+    get parentId(): string{
+        return this._parentId;
     }
 
-    set parent(parent: UserParent){
-        this._parent = parent;
+    set parentId(parentId: string){
+        this._parentId = parentId;
     }
 }

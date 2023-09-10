@@ -1,10 +1,10 @@
-export default interface Service<Request, Response>{
+export default interface ICRUDService<Entity>{
 
-    create(dto: Request);
+    create(entity: Entity);
 
-    read(id: number): Response;
+    read(id: string);
 
-    update(id: number, dto: Request);
+    update(id: string, entity: Entity);
 
-    delete(id: number);
+    delete(id: string, entity?: Entity);
 }
