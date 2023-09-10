@@ -12,15 +12,8 @@ import { AuthGuard }  from "./guard/auth.guard";
 import { UserEditComponent } from "./view/pages/user/user-edit/user-edit.component";
 
 
+
 const routes: Routes = [
-  {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'register',
-    component: RegisterComponent
-  },
   {
     path: 'dashboard',
     component: DashboardComponent,
@@ -39,14 +32,21 @@ const routes: Routes = [
   },
   {
     path: 'task',
-    component: TaskComponent,
-    canActivate: [AuthGuard]
+    component: TaskComponent
   },
   {
     path: 'gratification',
-    component: GratificationComponent,
-    canActivate: [AuthGuard]
+    component: GratificationComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
   }
+
 ];
 
 @NgModule({
