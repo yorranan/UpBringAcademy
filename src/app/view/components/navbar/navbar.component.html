@@ -72,27 +72,27 @@
             class=" nav-link"
             data-toggle="dropdown"
             href="javascript:void(0)"
-            ngbDropdownToggle
+            ngbDropdownToggle 
           >
             <i class="bi bi-person-circle"></i>
             <b class=" caret d-none d-lg-block d-xl-block"> </b>
             <p class=" d-lg-none">Log out</p>
           </a>
-          <ul class=" dropdown-navbar" ngbDropdownMenu>
+          <ul class=" dropdown-navbar" style="background-color: #f9f9ff;" ngbDropdownMenu>
             <li class=" nav-link">
               <a (click)="profile()" class="nav-item d-flex" href="javascript:void(0)" ngbDropdownItem>
-                Profile
+                Perfil
               </a>
             </li>
             <li class=" nav-link">
               <a class=" nav-item" href="javascript:void(0)" ngbDropdownItem>
-                Settings
+                Configurações
               </a>
             </li>
             <li class=" dropdown-divider"></li>
             <li class=" nav-link">
               <a class=" nav-item" href="javascript:void(0)" (click)="logOut()" ngbDropdownItem>
-                Log out
+                Sair
               </a>
             </li>
           </ul>
