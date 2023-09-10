@@ -2,20 +2,25 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from "@angular/fire/compat/firestore";
 import UserParent from '../entities/UserParent';
 import ICRUDService from './ICRUDService'
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Injectable({
     providedIn: 'root'
 })
 export default class UserParentService implements ICRUDService<UserParent>{
-    private PATH: string = 'user'
+    private PATH: string = 'users'
 
-    constructor(private firestore: AngularFirestore) { }
+    constructor(private firestore: AngularFirestore, private auth: AngularFireAuth) { }
 
     create(user: UserParent) {
-        user.registerDate = new Date();
-        user.inactivateDate = null;
-        user.children = [];
-        this.firestore.collection(this.PATH).add(mapper(user));
+      user.admin = true;
+      user.registerDate = new Date();
+      user.inactivateDate = null;
+      user.childrenId = [];
+      return this.auth.createUserWithEmailAndPassword(user.email, user.password)
+      .then((credendial) =>{
+        return this.firestore.collection(this.PATH).doc(credendial.user.uid).set(mapper(user));
+      });
     }
 
     read(id: string){
@@ -35,11 +40,12 @@ export default class UserParentService implements ICRUDService<UserParent>{
 function mapper(user: UserParent){
     return {
       name: user.name,
+      admin: user.admin,
       email: user.email,
       password: user.password,
-      age: user.age,
+      birthDate: user.birthDate,
       registerDate: user.registerDate,
       inactivateDate: user.inactivateDate,
-      childrenId: user.children.map(child => child.id)
+      childrenId: user.childrenId
     }
   }
