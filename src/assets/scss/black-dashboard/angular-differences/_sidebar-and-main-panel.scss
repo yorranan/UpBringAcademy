@@ -27,7 +27,7 @@
 }
 .sidebar, .off-canvas-sidebar{
   &, &[data="red"]{
-    @include linear-gradient($danger-states, $danger);
+    @include linear-gradient($teal, #173fa3);
   }
   &[data="primary"]{
     @include linear-gradient($primary-states, $primary);

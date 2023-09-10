@@ -205,7 +205,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   profile(){
-    
+    this.router.navigate(["/user", this.auth.id], {state:{admin: this.auth.admin}});
   }
 
   logOut(){

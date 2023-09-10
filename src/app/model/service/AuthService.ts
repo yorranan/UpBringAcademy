@@ -12,14 +12,11 @@ export default class AuthService{
     constructor(private router: Router, private firebaseAuth: AngularFireAuth, private firastore: AngularFirestore){
         this.firebaseAuth.authState.subscribe(user => {
             if(user){
-                this.userData = user;
-                sessionStorage.setItem('user', JSON.stringify(this.userData));
-                JSON.parse(sessionStorage.getItem('user')!);
-            }else{
-                sessionStorage.setItem('user', null);
-                JSON.parse(sessionStorage.getItem('user')!);
+                localStorage.setItem('user', JSON.stringify(user));
+                JSON.parse(localStorage.getItem('user')!);
             }
         });
+        this.userData = JSON.parse(localStorage.getItem('user'));
     }
 
     get isLoggedIn(): boolean{
@@ -32,7 +29,7 @@ export default class AuthService{
     logIn(email: string, password: string){
         return this.firebaseAuth.signInWithEmailAndPassword(email, password).then(result =>{
             this.userData = result.user;
-            sessionStorage.setItem('user', JSON.stringify(this.userData));
+            localStorage.setItem('user', JSON.stringify(this.userData));
             this.router.navigate(['dashboard']);
         }).catch((error: any) =>{
             window.alert(error);
@@ -41,7 +38,7 @@ export default class AuthService{
 
     logOut(){
         return this.firebaseAuth.signOut().then(() => {
-            sessionStorage.removeItem('user');
+            localStorage.removeItem('user');
             this.router.navigate(['login']);
         });
     }
