@@ -13,16 +13,16 @@
           <ol class="list-group">
             <a href="#" class="p-3 mb-2 bg-dark  bg-gradient text-white list-group-item list-group-item-action active" aria-current="true" style="border-color: transparent">
               <div class="d-flex w-100 justify-content-between" >
-                <h3 class="mb-1">Title</h3>
+                <h3 class="mb-1">{{name}}</h3>
                 <div>
                   <button class="btn btn-primary float-md-right bi bi-pencil-square btn-info"> Editar</button>
                   <button class="btn btn-secondary float-md-right bi bi-dash-circle btn-danger"> Excluir</button>
                   <br/>
                 </div>
               </div>
-              <p class="mb-1">Aqui irá ficar a descrição da bonificação</p>
-              <small>Aqui deve ficar atribuições aos filhos</small>
-              <small class="align-content-end float-md-right">Limite de retiradas</small>
+              <p class="mb-1">{{description}}</p>
+              <small>Aqui deve ficar atribuições aos filhos}</small>
+              <small class="align-content-end float-md-right">Pontos necessários para retirar: {{points}}</small>
             </a>
           </ol>
 

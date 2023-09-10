@@ -3,8 +3,7 @@ import { ROUTES } from "../sidebar/sidebar.component";
 import { Location } from "@angular/common";
 import { Router } from "@angular/router";
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import User from "src/app/model/entities/User";
-import UserService from "src/app/model/service/UserService";
+import AuthService from "src/app/model/service/AuthService";
 
 @Component({
   selector: "app-navbar",
@@ -18,7 +17,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   private toggleButton: any;
   private sidebarVisible: boolean;
 
-  user: User;
+  auth;
 
   public isCollapsed = true;
 
@@ -29,10 +28,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private element: ElementRef,
     private router: Router,
     private modalService: NgbModal,
-    private userService: UserService
+    private authService: AuthService
   ) {
     this.location = location;
     this.sidebarVisible = false;
+    this.authService.getUserAuth().subscribe(res => {
+      this.auth = {
+        id: res.payload.id,
+        ... res.payload.data() as any
+      }
+    })
   }
   // function that adds color white/transparent to the navbar on resize (this is for the collapse)
    updateColor = () => {
@@ -46,7 +51,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
      }
    };
   ngOnInit() {
-    this.user = this.userService.obterPorId(1);
     window.addEventListener("resize", this.updateColor);
     this.listTitles = ROUTES.filter(listTitle => listTitle);
     const navbar: HTMLElement = this.element.nativeElement;
@@ -201,6 +205,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   profile(){
-    this.router.navigate(["/user"]);
+    
+  }
+
+  logOut(){
+    this.authService.logOut();
   }
 }

@@ -65,7 +65,7 @@
           </ul>
         </li>-->
         <li class="nav-item">
-          {{user.name}}
+          {{auth.name}}
         </li>
         <li class=" nav-item" ngbDropdown>
           <a
@@ -91,7 +91,7 @@
             </li>
             <li class=" dropdown-divider"></li>
             <li class=" nav-link">
-              <a class=" nav-item" href="javascript:void(0)" ngbDropdownItem>
+              <a class=" nav-item" href="javascript:void(0)" (click)="logOut()" ngbDropdownItem>
                 Log out
               </a>
             </li>
