@@ -2,7 +2,7 @@
   <div class="logo">
     <a class="simple-text">
       <img src="assets/img/iconUpBringAcademy.png" class="img-fluid"  width="40" height="20"> 
-      UpBring Academy</a>
+      </a>
   </div>
 
   <div class="sidebar-wrapper">
@@ -14,7 +14,9 @@
       >
         <a [routerLink]="[menuItem.path]">
           <i class="tim-icons  {{ menuItem.icon }}"></i>
-          <h4>{{ menuItem.title }}</h4>
+          <strong>
+            <h4 >{{ menuItem.title }}</h4>
+          </strong>
         </a>
       </li>
     </ul>

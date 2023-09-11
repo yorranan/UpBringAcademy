@@ -13,12 +13,12 @@ export const ROUTES: RouteInfo[] = [
     icon: "icon-chart-pie-36",
     class: ""
   },
-  {
+  /*{
     path: "/user",
     title: "Usuario",
     icon: "icon-atom",
     class: ""
-  },
+  },*/
   {
     path: "/task",
     title: "Tarefas",
