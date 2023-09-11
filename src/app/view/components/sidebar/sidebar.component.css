@@ -1,0 +1,6 @@
+.logo {
+    display: flex;
+    flex-direction: row;
+        /* row é padrão */
+    justify-content: center;
+}
