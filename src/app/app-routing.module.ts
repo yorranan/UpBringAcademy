@@ -22,13 +22,12 @@ const routes: Routes = [
   {
     path: 'user/:id',
     component: UserComponent,
-    canActivate: [AuthGuard],
-    children: [
-      {
-        path: 'edit',
-        component: UserEditComponent
-      }
-    ]
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'user/:id/edit',
+    component: UserEditComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'task',
