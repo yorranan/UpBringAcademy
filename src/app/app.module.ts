@@ -25,6 +25,9 @@ import { FormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AuthGuard } from './guard/auth.guard';
 import { UserEditComponent } from './view/pages/user/user-edit/user-edit.component';
+import { CreateTaskComponent } from './view/pages/task/create-task/create-task.component';
+import Task from "./model/entities/Task";
+
 
 @NgModule({
   declarations: [
@@ -39,6 +42,7 @@ import { UserEditComponent } from './view/pages/user/user-edit/user-edit.compone
     LoginComponent,
     RegisterComponent,
     UserEditComponent,
+    CreateTaskComponent,
   ],
   imports: [
     FormsModule,
@@ -49,9 +53,8 @@ import { UserEditComponent } from './view/pages/user/user-edit/user-edit.compone
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AppRoutingModule
   ],
-  providers: [TaskService, AuthGuard],
+  providers: [TaskService, AuthGuard, Task ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
