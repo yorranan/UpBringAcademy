@@ -15,10 +15,10 @@ export default class TaskService implements ICRUDService<Task> {
         task.conclusionDateTime = null;
         return this.firestore.collection(this.PATH).add(mapper(task));
     }
-
-    read(id: string){
-        return this.firestore.collection(this.PATH).doc(id).snapshotChanges();
-    }
+      read(id: string)
+      {
+          return this.firestore.collection(this.PATH).doc(id).snapshotChanges();
+      }
 
     update(id: string, task: Task){
         return this.firestore.collection(this.PATH).doc(id).update(mapper(task))
