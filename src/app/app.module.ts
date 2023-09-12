@@ -28,7 +28,6 @@ import Task from "./model/entities/Task";
 import { FamilyComponent } from './view/pages/user/family/family.component';
 import { RegisterChildComponent } from './view/pages/user/register-child/register-child.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +54,7 @@ import { RegisterChildComponent } from './view/pages/user/register-child/registe
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [TaskService, AuthGuard, Task ],
   bootstrap: [AppComponent]
