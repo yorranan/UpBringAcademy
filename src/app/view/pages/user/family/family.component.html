@@ -1,0 +1,50 @@
+<app-sidebar></app-sidebar>
+<main class="main-panel">
+  <app-navbar></app-navbar>
+  <div class="content" >
+    <div class="col col-lg-12 mb-4 mb-lg-0">
+      <div class="card mb-8" style="border-radius: 0.5rem">
+          <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                  <h4 class="card-title m-0">Gratificações</h4>
+                  <button (click)="toRegisterChild()" type="button" class="btn btn-primary btn-lg btn-success">Cadastrar Filho</button>
+              </div>
+              <div class="table-responsive p-0">
+                  <table class="table align-middle mb-0">
+                      <!-- Cabeçalho da tabela -->
+                      <thead class="table-header">
+                          <tr>
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                  Nome
+                              </th>
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                  Descrição
+                              </th>
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                  Pontos
+                              </th>
+                          </tr>
+                      </thead>
+                      <!-- Conteúdo da tabela (aqui você pode adicionar suas linhas de dados) -->
+                      <tbody>
+                          <tr>
+                              <td>Item 1</td>
+                              <td>Descrição do Item 1</td>
+                              <td class="text-center">10</td>
+                          </tr>
+                          <tr>
+                              <td>Item 2</td>
+                              <td>Descrição do Item 2</td>
+                              <td class="text-center">20</td>
+                          </tr>
+                          <!-- Adicione mais linhas conforme necessário -->
+                          <!--codigo certo-->
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>  
+  </div>
+  <app-footer></app-footer>
+</main>

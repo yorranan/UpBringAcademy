@@ -11,6 +11,8 @@ import { RegisterComponent } from "./view/pages/authentication/register/register
 import { AuthGuard }  from "./guard/auth.guard";
 import { UserEditComponent } from "./view/pages/user/user-edit/user-edit.component";
 import { CreateTaskComponent } from "./view/pages/task/create-task/create-task.component";
+import { FamilyComponent } from "./view/pages/user/family/family.component";
+import { RegisterChildComponent } from "./view/pages/user/register-child/register-child.component";
 
 
 const routes: Routes = [
@@ -25,8 +27,18 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'registerChild',
+    component: RegisterChildComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'user/:id/edit',
     component: UserEditComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'family',
+    component: FamilyComponent,
     canActivate: [AuthGuard]
   },
   {
