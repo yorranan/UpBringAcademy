@@ -30,13 +30,13 @@ export class CreateTaskComponent implements OnInit {
     private auth: AngularFireAuth,
   ) {
     this.auth.user.subscribe(user => {
-      if (user) {
-        this.parentId = user.uid;
-      }
-    });
+    if (user) {
+      this.parentId = user.uid;
+    }
+  });
   }
     ngOnInit(): void {
-  }
+    }
   createTask() {
     const task = new Task;
     task.name = this.name;

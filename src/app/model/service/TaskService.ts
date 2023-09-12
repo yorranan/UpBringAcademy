@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import Task from "../entities/Task";
 import ICRUDService from "./ICRUDService";
 import { AngularFirestore } from "@angular/fire/compat/firestore";
+import firebase from "firebase/compat";
 
 @Injectable({
     providedIn: 'root'
@@ -27,6 +28,30 @@ export default class TaskService implements ICRUDService<Task> {
     delete(id: string){
         return this.firestore.collection(this.PATH).doc(id).delete()
     }
+   getTasksByParentId(parentId: string) {
+    try {
+      const collectionRef = this.firestore.collection(this.PATH).ref;
+      const querySnapshot = collectionRef.where('parentId', '==', parentId).get();
+
+      const tasks = querySnapshot.docs.map((doc) => {
+        const task = doc.data() as Task;
+        return {
+          name: task.name,
+          description: task.description,
+          points: task.points,
+          beginDateTime: task.beginDateTime,
+          endDateTime: task.endDateTime,
+          conclusionDateTime: task.conclusionDateTime,
+          parentId: task.parentId,
+        };
+      });
+
+      return tasks;
+    } catch (error) {
+      console.error('Erro ao buscar tarefas:', error);
+      throw error;
+    }
+  }
 }
 
 function mapper(task: Task){
