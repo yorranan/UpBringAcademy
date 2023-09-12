@@ -28,7 +28,7 @@
                       <!-- Conteúdo da tabela (aqui você pode adicionar suas linhas de dados) -->
                       <tbody>
                           <tr *ngFor="let child of children">
-                              <td>{{child.name}}</td>
+                              <td (click)="toChild(child.id)">{{child.name}}</td>
                               <td>{{child.email}}</td>
                               <td class="text-center">{{child.points}}</td>
                           </tr>

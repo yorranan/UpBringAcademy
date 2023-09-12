@@ -35,7 +35,7 @@ export default class UserParentService implements ICRUDService<UserParent>{
     delete(id: string, user: UserParent) {
       user.inactivateDate = new Date()
       this.firestore.collection(this.PATH).doc(id).update(mapper(user));
-      return this.authService.logOut();
+      this.authService.logOut();
     }
 }
 

@@ -37,6 +37,10 @@ export class FamilyComponent {
       }
     })
   }
+  
+toChild(childId: string){
+  this.router.navigate(["/user", childId]);
+}
 
   toRegisterChild(){
     this.router.navigate(['/registerChild']);
