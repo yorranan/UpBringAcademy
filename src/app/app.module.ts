@@ -23,8 +23,8 @@ import { FormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AuthGuard } from './guard/auth.guard';
 import { UserEditComponent } from './view/pages/user/user-edit/user-edit.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDialogModule } from '@angular/material/dialog';
+import { CreateTaskComponent } from './view/pages/task/create-task/create-task.component';
+import Task from "./model/entities/Task";
 
 
 @NgModule({
@@ -39,7 +39,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     GratificationComponent,
     LoginComponent,
     RegisterComponent,
-    UserEditComponent
+    UserEditComponent,
+    CreateTaskComponent,
   ],
   imports: [
     FormsModule,
@@ -54,7 +55,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     BrowserAnimationsModule,
     MatDialogModule
   ],
-  providers: [TaskService, AuthGuard],
+  providers: [TaskService, AuthGuard, Task ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
