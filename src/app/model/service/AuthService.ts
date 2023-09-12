@@ -32,7 +32,8 @@ export default class AuthService{
             localStorage.setItem('user', JSON.stringify(this.userData));
             this.router.navigate(['dashboard']);
         }).catch((error: any) =>{
-            window.alert(error);
+            window.alert("Complete Todos os Campos");
+            //window.alert(error);
         });
     }
 
