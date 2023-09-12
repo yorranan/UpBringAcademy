@@ -10,13 +10,12 @@ import TaskService from 'src/app/model/service/TaskService';
 export class DashboardComponent implements OnInit {
 
   tasks: Task[];
-  
+
   constructor(private taskService: TaskService){
 
   }
-  
+
   ngOnInit(): void {
-    
   }
 
 }

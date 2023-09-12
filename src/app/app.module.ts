@@ -16,8 +16,6 @@ import { LoginComponent } from './view/pages/authentication/login/login.componen
 import { RegisterComponent } from './view/pages/authentication/register/register.component';
 import TaskService from './model/service/TaskService';
 import { environment } from '../environments/environment';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
@@ -53,6 +51,9 @@ import Task from "./model/entities/Task";
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [TaskService, AuthGuard, Task ],
   bootstrap: [AppComponent]

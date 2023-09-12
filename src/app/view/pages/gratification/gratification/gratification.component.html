@@ -1,33 +1,50 @@
 <app-sidebar></app-sidebar>
 <main class="main-panel">
   <app-navbar></app-navbar>
-  <div class="content">
-    <div class="container">
-      <div class="main-panel">
-        <br/>
-        <div class="row flex-column">
-          <button type="button" class="btn btn-primary btn-lg btn-success">Criar Gratificação</button>
-        </div>
-        <br/>
-        <div class="row flex-column">
-          <ol class="list-group">
-            <a href="#" class="p-3 mb-2 bg-dark  bg-gradient text-white list-group-item list-group-item-action active" aria-current="true" style="border-color: transparent">
-              <div class="d-flex w-100 justify-content-between" >
-                <h3 class="mb-1">{{name}}</h3>
-                <div>
-                  <button class="btn btn-primary float-md-right bi bi-pencil-square btn-info"> Editar</button>
-                  <button class="btn btn-secondary float-md-right bi bi-dash-circle btn-danger"> Excluir</button>
-                  <br/>
-                </div>
+  <div class="content" >
+    <div class="col col-lg-12 mb-4 mb-lg-0">
+      <div class="card mb-8" style="border-radius: 0.5rem">
+          <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                  <h4 class="card-title m-0">Gratificações</h4>
+                  <button type="button" class="btn btn-primary btn-lg btn-success">Criar Gratificação</button>
               </div>
-              <p class="mb-1">{{description}}</p>
-              <small>Aqui deve ficar atribuições aos filhos</small>
-              <small class="align-content-end float-md-right">Pontos necessários para retirar: {{points}}</small>
-            </a>
-          </ol>
-        </div>
+              <div class="table-responsive p-0">
+                  <table class="table align-middle mb-0">
+                      <!-- Cabeçalho da tabela -->
+                      <thead class="table-header">
+                          <tr>
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                  Nome
+                              </th>
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                  Descrição
+                              </th>
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                  Pontos
+                              </th>
+                          </tr>
+                      </thead>
+                      <!-- Conteúdo da tabela (aqui você pode adicionar suas linhas de dados) -->
+                      <tbody>
+                          <tr>
+                              <td>Item 1</td>
+                              <td>Descrição do Item 1</td>
+                              <td class="text-center">10</td>
+                          </tr>
+                          <tr>
+                              <td>Item 2</td>
+                              <td>Descrição do Item 2</td>
+                              <td class="text-center">20</td>
+                          </tr>
+                          <!-- Adicione mais linhas conforme necessário -->
+                          <!--codigo certo-->
+                      </tbody>
+                  </table>
+              </div>
+          </div>
       </div>
-    </div>
+  </div>  
   </div>
   <app-footer></app-footer>
 </main>
