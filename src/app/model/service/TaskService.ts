@@ -6,7 +6,7 @@ import { AngularFirestore } from "@angular/fire/compat/firestore";
 @Injectable({
     providedIn: 'root'
 })
-export default class TaskService implements ICRUDService<Task>{
+export default class TaskService implements ICRUDService<Task> {
     private PATH: string = 'tasks'
 
     constructor(private firestore: AngularFirestore){}
@@ -32,9 +32,9 @@ export default class TaskService implements ICRUDService<Task>{
 function mapper(task: Task){
     return{
         name: task.name,
-        description: task.desciption,
+        description: task.description,
         points: task.points,
-        begindDateTime: task.beginDateTime,
+        beginDateTime: task.beginDateTime,
         endDateTime: task.endDateTime,
         conclusionDateTime: task.conclusionDateTime,
         parentId: task.parentId,

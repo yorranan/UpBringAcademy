@@ -1,0 +1,46 @@
+<app-sidebar></app-sidebar>
+<main class="main-panel">
+  <app-navbar></app-navbar>
+  <div class="content">
+    <div class="container">
+      <div class="main-panel">
+        <br/>
+        <div class="col-md-100 col-lg-6 col-xl-4 offset-xl-1">
+          <form>
+            <p>Nova Terefa</p>
+
+            <div class="form-outline">
+              <label for="form3Example3" class="form-label">Nome</label>
+              <input id="name" type="text" class="form-control mb-1" placeholder="Nome" name="name" [(ngModel)]="name">
+            </div>
+
+            <div class="form-outline">
+              <label for="form3Example3" class="form-label">Descrição</label>
+              <input id="description" type="text" class="form-control mb-1" id="Descrição" placeholder="Descrição"
+                     name="description" [(ngModel)]="description"/>
+            </div>
+
+            <div class="form-outline">
+              <label class="form-label" for="form3Example3">Pontos</label>
+              <input id="points" type="text" class="form-control mb-1" placeholder="Pontos" name="points"
+                     [(ngModel)]="points"/>
+            </div>
+
+            <div class="form-outline">
+              <label for="form3Example4" class="form-label">Data Final</label>
+              <input id="endDateTime" type="date" class="form-control mb-1" id="endDateTime" name="endDateTime"
+                     [(ngModel)]="endDateTime"/>
+            </div>
+
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <button (click)="createTask()" type="button" class="btn btn-primary btn-lg"
+                      style="padding-left: 2.5rem; padding-right: 2.5rem;">Criar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</main>

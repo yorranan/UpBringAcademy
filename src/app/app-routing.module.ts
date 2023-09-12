@@ -10,7 +10,7 @@ import { LoginComponent } from "./view/pages/authentication/login/login.componen
 import { RegisterComponent } from "./view/pages/authentication/register/register.component";
 import { AuthGuard }  from "./guard/auth.guard";
 import { UserEditComponent } from "./view/pages/user/user-edit/user-edit.component";
-
+import { CreateTaskComponent } from "./view/pages/task/create-task/create-task.component";
 
 
 const routes: Routes = [
@@ -44,7 +44,13 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'create-task',
+    component: CreateTaskComponent
   }
+
+
 
 ];
 
