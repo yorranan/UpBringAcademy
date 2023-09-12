@@ -25,6 +25,8 @@ import { AuthGuard } from './guard/auth.guard';
 import { UserEditComponent } from './view/pages/user/user-edit/user-edit.component';
 import { CreateTaskComponent } from './view/pages/task/create-task/create-task.component';
 import Task from "./model/entities/Task";
+import { FamilyComponent } from './view/pages/user/family/family.component';
+import { RegisterChildComponent } from './view/pages/user/register-child/register-child.component';
 
 
 @NgModule({
@@ -41,6 +43,8 @@ import Task from "./model/entities/Task";
     RegisterComponent,
     UserEditComponent,
     CreateTaskComponent,
+    FamilyComponent,
+    RegisterChildComponent,
   ],
   imports: [
     FormsModule,
@@ -51,9 +55,7 @@ import Task from "./model/entities/Task";
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatDialogModule
+    AppRoutingModule
   ],
   providers: [TaskService, AuthGuard, Task ],
   bootstrap: [AppComponent]

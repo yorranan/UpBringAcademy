@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import UserChild from 'src/app/model/entities/UserChild';
 import UserParent from 'src/app/model/entities/UserParent';
@@ -17,7 +16,7 @@ export class UserEditComponent {
   email: string;
   birthDate: Date;
 
-  constructor(private router: Router, private parentService: UserParentService, private childService: UserChildService, private dialog: MatDialog){
+  constructor(private router: Router, private parentService: UserParentService, private childService: UserChildService){
 
   }
 

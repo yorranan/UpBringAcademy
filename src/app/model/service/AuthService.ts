@@ -10,12 +10,6 @@ export default class AuthService{
     userData: any;
 
     constructor(private router: Router, private firebaseAuth: AngularFireAuth, private firastore: AngularFirestore){
-        this.firebaseAuth.authState.subscribe(user => {
-            if(user){
-                localStorage.setItem('user', JSON.stringify(user));
-                JSON.parse(localStorage.getItem('user')!);
-            }
-        });
         this.userData = JSON.parse(localStorage.getItem('user'));
     }
 
@@ -27,14 +21,16 @@ export default class AuthService{
     }
 
     logIn(email: string, password: string){
-        return this.firebaseAuth.signInWithEmailAndPassword(email, password).then(result =>{
-            this.userData = result.user;
-            localStorage.setItem('user', JSON.stringify(this.userData));
-            this.router.navigate(['dashboard']);
-        }).catch((error: any) =>{
-            window.alert("Complete Todos os Campos");
-            //window.alert(error);
-        });
+        return this.firebaseAuth.setPersistence("local").then(() =>{
+            return this.firebaseAuth.signInWithEmailAndPassword(email, password).then(result =>{
+                this.userData = result.user;
+                localStorage.setItem('user', JSON.stringify(this.userData));
+                this.router.navigate(['dashboard']);
+            }).catch((error: any) =>{
+                window.alert("Complete Todos os Campos");
+                //window.alert(error);
+            });
+        })
     }
 
     logOut(){
