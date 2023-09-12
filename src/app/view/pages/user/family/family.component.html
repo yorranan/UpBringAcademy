@@ -27,15 +27,10 @@
                       </thead>
                       <!-- Conteúdo da tabela (aqui você pode adicionar suas linhas de dados) -->
                       <tbody>
-                          <tr>
-                              <td>Item 1</td>
-                              <td>Descrição do Item 1</td>
-                              <td class="text-center">10</td>
-                          </tr>
-                          <tr>
-                              <td>Item 2</td>
-                              <td>Descrição do Item 2</td>
-                              <td class="text-center">20</td>
+                          <tr *ngFor="let child of children">
+                              <td>{{child.name}}</td>
+                              <td>{{child.email}}</td>
+                              <td class="text-center">{{child.points}}</td>
                           </tr>
                           <!-- Adicione mais linhas conforme necessário -->
                           <!--codigo certo-->
