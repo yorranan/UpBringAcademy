@@ -25,47 +25,11 @@
     </button>
     <div class=" navbar-collapse" [ngbCollapse]="isCollapsed" id="navigation">
       <ul class=" navbar-nav ml-auto">
-        <!--<li class=" nav-item" ngbDropdown>
-          <a
-            class=" nav-link"
-            data-toggle="dropdown"
-            href="javascript:void(0)"
-            ngbDropdownToggle
-          >
-            <div class=" notification d-none d-lg-block d-xl-block"></div>
-            <i class="bi bi-bell-fill"> </i>
-            <p class=" d-lg-none">Notifications</p>
-          </a>
-          <ul class=" dropdown-menu-right dropdown-navbar" ngbDropdownMenu>
-            <li class=" nav-link">
-              <a class=" nav-item" href="javascript:void(0)" ngbDropdownItem>
-                Mike John responded to your email
-              </a>
-            </li>
-            <li class=" nav-link">
-              <a class=" nav-item" href="javascript:void(0)" ngbDropdownItem>
-                You have 5 more tasks
-              </a>
-            </li>
-            <li class=" nav-link">
-              <a class=" nav-item" href="javascript:void(0)" ngbDropdownItem>
-                Your friend Michael is in town
-              </a>
-            </li>
-            <li class=" nav-link">
-              <a class=" nav-item" href="javascript:void(0)" ngbDropdownItem>
-                Another notification
-              </a>
-            </li>
-            <li class=" nav-link">
-              <a class=" nav-item" href="javascript:void(0)" ngbDropdownItem>
-                Another one
-              </a>
-            </li>
-          </ul>
-        </li>-->
         <li class="nav-item"  style="font-size:1.5em">
           {{auth.name}}
+        </li>
+        <li *ngIf="!auth.admin" class="nav-item"  style="font-size:1.5em">
+          {{auth.points}}
         </li>
         <li class="nav-item" ngbDropdown>
           <a
