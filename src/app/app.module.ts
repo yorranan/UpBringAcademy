@@ -30,6 +30,8 @@ import { RegisterChildComponent } from './view/pages/user/register-child/registe
 import { CreateGratificationComponent } from './view/pages/gratification/create-gratification/create-gratification.component';
 import { EditGratificationComponent } from './view/pages/gratification/edit-gratification/edit-gratification.component';
 import { EditTaskComponent } from './view/pages/task/edit-task/edit-task.component';
+import { SelectChildComponent } from './view/pages/task/select-child/select-child.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 
 @NgModule({
@@ -51,6 +53,7 @@ import { EditTaskComponent } from './view/pages/task/edit-task/edit-task.compone
     CreateGratificationComponent,
     EditGratificationComponent,
     EditTaskComponent,
+    SelectChildComponent,
   ],
   imports: [
     FormsModule,
@@ -62,6 +65,7 @@ import { EditTaskComponent } from './view/pages/task/edit-task/edit-task.compone
     AngularFirestoreModule,
     AngularFireAuthModule,
     AppRoutingModule,
+    MatCheckboxModule,
   ],
   providers: [TaskService, AuthGuard, Task ],
   bootstrap: [AppComponent]

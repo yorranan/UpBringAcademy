@@ -31,6 +31,11 @@ export default class TaskService implements ICRUDService<Task> {
    getTasksByParentId(parentId: string) {
      return this.firestore.collection(this.PATH, ref => ref.where('parentId', '==', parentId)).snapshotChanges()
   }
+
+  getTasksByChildId(parentId: string) {
+    //return this.firestore.collection(this.PATH, ref => ref.where('parentId', 'array-contains', '==', parentId)).snapshotChanges()
+  }
+
 }
 
 function mapper(task: Task){

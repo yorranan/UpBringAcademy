@@ -5,6 +5,8 @@ import AuthService from "../../../../model/service/AuthService";
 import TaskService from "../../../../model/service/TaskService";
 import Task from "src/app/model/entities/Task";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
+import {DatabaseReference} from "@angular/fire/compat/database/interfaces";
+import DateReference from "../../../../model/util/DateReference";
 
 
 @Component({
@@ -20,6 +22,7 @@ export class CreateTaskComponent implements OnInit {
   public begindDateTime: Date;
   public endDateTime: Date;
   public parentId: string;
+
 
   constructor(
     private router: Router,
@@ -46,12 +49,9 @@ export class CreateTaskComponent implements OnInit {
     task.endDateTime = this.endDateTime;
     task.parentId = this.parentId;
 
-    // console.log('name:', this.name);
-    // console.log('description:', this.description);
-    // console.log('points:', this.points);
-    // console.log('begindDateTime:', this.begindDateTime);
-    // console.log('endDateTime:', this.endDateTime);
-    // console.log('parentId:', this.parentId);
+    const dateReference = new DateReference();
+    task.conclusionDateTime = [dateReference];
+
     this.taskService.create(task);
     this.router.navigate(['task']);
   }

@@ -52,5 +52,4 @@ export class EditTaskComponent {
   cancel(){
     this.router.navigate(['task']);
   }
-  
 }

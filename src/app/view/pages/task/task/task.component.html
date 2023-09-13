@@ -10,8 +10,7 @@
             <div class="card-body">
               <div class="d-flex justify-content-between align-items-center">
                 <h4 class="card-title m-0">Tarefa</h4>
-                  <button (click)="create()" type="button" class="btn btn-primary btn-lg btn-success">Nova Tarefa
-                  </button>
+                  <button  *ngIf="user.admin" (click)="create()" type="button" class="btn btn-primary btn-lg btn-success">Nova Tarefa</button>
               </div>
               <br/>
               <div class="table-responsive p-0">
@@ -28,12 +27,6 @@
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                       Pontos
                     </th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                      Editar
-                    </th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                      Excluir
-                    </th>
                   </tr>
                   </thead>
                   <!-- Conteúdo da tabela (aqui você pode adicionar suas linhas de dados) -->
@@ -42,8 +35,10 @@
                     <td>{{task.name}}</td>
                     <td>{{task.description}}</td>
                     <td>{{task.points}}</td>
-                    <td><button (click)="update(task)" type="button" class="btn btn-primary btn-lg btn-success">Editar</button></td>
-                    <td><button (click)="deleted(task)" type="button" class="btn btn-primary btn-lg btn-success">Excluir</button></td>
+                    <td *ngIf="user.admin"><button (click)="update(task)" type="button" class="btn btn-primary btn-lg btn-success">Editar</button></td>
+                    <td *ngIf="user.admin"><button (click)="deleted(task)" type="button" class="btn btn-primary btn-lg btn-success">Excluir</button></td>
+                    <td *ngIf="user.admin"><button (click)="select(task)" type="button" class="btn btn-primary btn-lg btn-success">Atribuir</button></td>
+                    <td *ngIf="!user.admin" class="text-center"><button (click)="done(task)" class="btn btn-success btn-lg" >Concluir </button></td>
                   </tr>
                   <!-- Adicione mais linhas conforme necessário -->
                   <!--codigo certo-->

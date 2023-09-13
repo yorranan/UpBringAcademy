@@ -28,51 +28,80 @@ export class TaskComponent implements OnInit {
   user: any;
 
   constructor(
-    private route: ActivatedRoute,
     private taskService: TaskService,
     private router: Router,
     private auth: AngularFireAuth,
-    private afs: AngularFirestore,
-    private authUser: AuthService,
-
+    private authUser: AuthService
   ) {
-    this.auth.user.subscribe(user => {
+  }
+
+  ngOnInit() {
+    const auth = JSON.parse(localStorage.getItem('user'));
+    this.authUser.getUserAuth().subscribe(user => {
       if (user) {
-        this.parentId = user.uid;
+        this.user = {
+          id: user.payload.id,
+          ...user.payload.data() as any
+        }
+        if (this.user.admin) {
+          this.parentId = this.user.id;
+          this.taskService.getTasksByParentId(this.parentId).subscribe(tasks => {
+            if (tasks) {
+              this.tasks = tasks.map(task => {
+                return {
+                  id: task.payload.doc.id,
+                  ...task.payload.doc.data() as any
+                } as Task
+              });
+            }
+            console.log(this.parentId);
+            console.log('admin');
+          });
+        } else {
+          this.parentId = this.user.parentId;
+          // this.taskService.getTasksByChildId(this.parentId).subscribe(tasks => {
+          //   if (tasks) {
+          //     this.tasks = tasks.map(task => {
+          //       return {
+          //         id: task.payload.doc.id,
+          //         ...task.payload.doc.data() as any
+          //       } as Task
+          //     });
+          //   }
+          // });
+          console.log(this.parentId);
+          console.log('criança');
+        }
       }
     });
   }
 
-    ngOnInit() {
-      const auth = JSON.parse(localStorage.getItem('user'));
-      this.taskService.getTasksByParentId(auth.uid).subscribe(tasks => {
-        if(tasks){
-        this.tasks = tasks.map(task => {
-          return {
-            id: task.payload.doc.id,
-            ...task.payload.doc.data() as any
-          } as Task
-        });
-        }
-      });
-    }
   create() {
     this.router.navigate(['create-task']);
   }
 
-  update(task: Task){
-    this.router.navigate(['task',task.id,'edit'],{state:{task: task}} );
+  update(task: Task) {
+    this.router.navigate(['task', task.id, 'edit'], {state: {task: task}});
   }
+
   confirm(message: string): boolean {
     return window.confirm(message);
   }
-  deleted(task: Task){
+
+  deleted(task: Task) {
     const message = `A Tarefa ${task.name} sera APAGADA`;
     const confirmed = this.confirm(message);
 
     if (confirmed) {
       this.taskService.delete(task.id);
     }
+  }
+
+  done(task: Task) {
+
+  }
+  select(task: Task) {
+    this.router.navigate(['select-child', task.id], {state: {task: task}});
   }
 
 }

@@ -16,6 +16,7 @@ import { FamilyComponent } from "./view/pages/user/family/family.component";
 import { RegisterChildComponent } from "./view/pages/user/register-child/register-child.component";
 import { CreateGratificationComponent } from "./view/pages/gratification/create-gratification/create-gratification.component";
 import { EditGratificationComponent } from "./view/pages/gratification/edit-gratification/edit-gratification.component";
+import {SelectChildComponent} from "./view/pages/task/select-child/select-child.component";
 
 
 const routes: Routes = [
@@ -79,6 +80,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'select-child/:taskId',
+    component: SelectChildComponent
   },
 
 ];
