@@ -29,6 +29,9 @@ import { FamilyComponent } from './view/pages/user/family/family.component';
 import { RegisterChildComponent } from './view/pages/user/register-child/register-child.component';
 import { CreateGratificationComponent } from './view/pages/gratification/create-gratification/create-gratification.component';
 import { EditGratificationComponent } from './view/pages/gratification/edit-gratification/edit-gratification.component';
+import { EditTaskComponent } from './view/pages/task/edit-task/edit-task.component';
+import { SelectChildComponent } from './view/pages/task/select-child/select-child.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
 import { DatePipe } from '@angular/common';
 
 @NgModule({
@@ -49,6 +52,8 @@ import { DatePipe } from '@angular/common';
     RegisterChildComponent,
     CreateGratificationComponent,
     EditGratificationComponent,
+    EditTaskComponent,
+    SelectChildComponent,
   ],
   imports: [
     FormsModule,
@@ -60,6 +65,7 @@ import { DatePipe } from '@angular/common';
     AngularFirestoreModule,
     AngularFireAuthModule,
     AppRoutingModule,
+    MatCheckboxModule,
   ],
   providers: [TaskService, AuthGuard, Task, DatePipe],
   bootstrap: [AppComponent]

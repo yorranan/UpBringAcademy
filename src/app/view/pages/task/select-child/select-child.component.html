@@ -1,0 +1,47 @@
+<app-sidebar></app-sidebar>
+<main class="main-panel">
+  <app-navbar></app-navbar>
+  <div class="content">
+    <div class="container">
+      <div class="main-panel">
+        <br/>
+        <div class="col col-lg-12 mb-4 mb-lg-0">
+          <div class="card mb-8" style="border-radius: 0.5rem">
+            <form (ngSubmit)="selectChild()">
+              <div *ngIf="user.admin" class="d-flex justify-content-between align-items-center">
+                <h4 class="card-title m-0">Filhos</h4>
+                <button (click)="selectChild()" type="button" class="btn btn-primary btn-lg btn-success">Selecionar Filho</button>
+              </div>
+              <div class="table-responsive p-0">
+                <table class="table align-middle mb-0">
+                  <!-- Cabeçalho da tabela -->
+                  <thead class="table-header">
+                  <tr>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      Nome
+                    </th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      Selecionar
+                    </th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let child of children">
+                    <td>{{child.name}}</td>
+                    <td>
+                      <section class="example-section">
+<!--                        <mat-checkbox [(ngModel)]="childSelection[child.id]" class="example-margin">Selecionar</mat-checkbox>-->
+                      </section>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</main>
