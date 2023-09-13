@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import Task from "../entities/Task";
 import ICRUDService from "./ICRUDService";
 import { AngularFirestore } from "@angular/fire/compat/firestore";
+import firebase from "firebase/compat";
 
 @Injectable({
     providedIn: 'root'
@@ -15,10 +16,10 @@ export default class TaskService implements ICRUDService<Task> {
         task.conclusionDateTime = null;
         return this.firestore.collection(this.PATH).add(mapper(task));
     }
-
-    read(id: string){
-        return this.firestore.collection(this.PATH).doc(id).snapshotChanges();
-    }
+      read(id: string)
+      {
+          return this.firestore.collection(this.PATH).doc(id).snapshotChanges();
+      }
 
     update(id: string, task: Task){
         return this.firestore.collection(this.PATH).doc(id).update(mapper(task))
@@ -27,6 +28,9 @@ export default class TaskService implements ICRUDService<Task> {
     delete(id: string){
         return this.firestore.collection(this.PATH).doc(id).delete()
     }
+   getTasksByParentId(parentId: string) {
+     return this.firestore.collection(this.PATH, ref => ref.where('parentId', '==', parentId)).snapshotChanges()
+  }
 }
 
 function mapper(task: Task){

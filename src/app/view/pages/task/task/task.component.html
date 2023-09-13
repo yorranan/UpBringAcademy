@@ -5,26 +5,53 @@
     <div class="container">
       <div class="main-panel">
         <br/>
-        <div class="row flex-column">
-          <button type="button" class="btn btn-primary btn-lg btn-success"  (click)="create()">Criar Tarefa</button>
-        </div>
-        <br/>
-        <div class="row flex-column">
-          <ol class="list-group">
-            <a href="#" class="p-3 mb-2 bg-dark  bg-gradient text-white list-group-item list-group-item-action active" aria-current="true" style="border-color: transparent">
-              <div class="d-flex w-100 justify-content-between" >
-                <h3 class="mb-1">Título da tarefa</h3>
-                <div>
-                  <button class="btn btn-primary float-md-right bi bi-pencil-square btn-info"> Editar</button>
-                  <button class="btn btn-secondary float-md-right bi bi-dash-circle btn-danger"> Excluir</button>
-                  <br/>
-                </div>
+        <div class="col col-lg-12 mb-4 mb-lg-0">
+          <div class="card mb-8" style="border-radius: 0.5rem">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <h4 class="card-title m-0">Tarefa</h4>
+                  <button (click)="create()" type="button" class="btn btn-primary btn-lg btn-success">Nova Tarefa
+                  </button>
               </div>
-              <p class="mb-1">Aqui irá ficar a descrição da tarefa</p>
-              <small>Aqui deve ficar atribuições aos filhos</small>
-              <small class="align-content-end float-md-right">Prazo final</small>
-            </a>
-          </ol>
+              <br/>
+              <div class="table-responsive p-0">
+                <table class="table align-middle mb-0">
+                  <!-- Cabeçalho da tabela -->
+                  <thead class="table-header">
+                  <tr>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      Nome
+                    </th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      description
+                    </th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      Pontos
+                    </th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      Editar
+                    </th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      Excluir
+                    </th>
+                  </tr>
+                  </thead>
+                  <!-- Conteúdo da tabela (aqui você pode adicionar suas linhas de dados) -->
+                  <tbody>
+                  <tr *ngFor="let task of tasks">
+                    <td>{{task.name}}</td>
+                    <td>{{task.description}}</td>
+                    <td>{{task.points}}</td>
+                    <td><button (click)="update(task.id)" type="button" class="btn btn-primary btn-lg btn-success">Editar</button></td>
+                    <td><button (click)="deleted(task.id)" type="button" class="btn btn-primary btn-lg btn-success">Excluir</button></td>
+                  </tr>
+                  <!-- Adicione mais linhas conforme necessário -->
+                  <!--codigo certo-->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -29,6 +29,8 @@ import { FamilyComponent } from './view/pages/user/family/family.component';
 import { RegisterChildComponent } from './view/pages/user/register-child/register-child.component';
 import { CreateGratificationComponent } from './view/pages/gratification/create-gratification/create-gratification.component';
 import { EditGratificationComponent } from './view/pages/gratification/edit-gratification/edit-gratification.component';
+import { EditTaskComponent } from './view/pages/task/edit-task/edit-task.component';
+
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { EditGratificationComponent } from './view/pages/gratification/edit-grat
     RegisterChildComponent,
     CreateGratificationComponent,
     EditGratificationComponent,
+    EditTaskComponent,
   ],
   imports: [
     FormsModule,

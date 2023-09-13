@@ -30,13 +30,13 @@ export class CreateTaskComponent implements OnInit {
     private auth: AngularFireAuth,
   ) {
     this.auth.user.subscribe(user => {
-      if (user) {
-        this.parentId = user.uid;
-      }
-    });
+    if (user) {
+      this.parentId = user.uid;
+    }
+  });
   }
     ngOnInit(): void {
-  }
+    }
   createTask() {
     const task = new Task;
     task.name = this.name;
@@ -46,12 +46,12 @@ export class CreateTaskComponent implements OnInit {
     task.endDateTime = this.endDateTime;
     task.parentId = this.parentId;
 
-    console.log('name:', this.name);
-    console.log('description:', this.description);
-    console.log('points:', this.points);
-    console.log('begindDateTime:', this.begindDateTime);
-    console.log('endDateTime:', this.endDateTime);
-    console.log('parentId:', this.parentId);
+    // console.log('name:', this.name);
+    // console.log('description:', this.description);
+    // console.log('points:', this.points);
+    // console.log('begindDateTime:', this.begindDateTime);
+    // console.log('endDateTime:', this.endDateTime);
+    // console.log('parentId:', this.parentId);
     this.taskService.create(task);
     this.router.navigate(['task']);
   }
