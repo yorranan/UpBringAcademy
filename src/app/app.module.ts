@@ -32,7 +32,7 @@ import { EditGratificationComponent } from './view/pages/gratification/edit-grat
 import { EditTaskComponent } from './view/pages/task/edit-task/edit-task.component';
 import { SelectChildComponent } from './view/pages/task/select-child/select-child.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
-
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -67,7 +67,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     AppRoutingModule,
     MatCheckboxModule,
   ],
-  providers: [TaskService, AuthGuard, Task ],
+  providers: [TaskService, AuthGuard, Task, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

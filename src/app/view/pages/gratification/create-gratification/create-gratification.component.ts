@@ -25,13 +25,20 @@ export class CreateGratificationComponent implements OnInit {
   }
 
   create(){
-    const gratification: Gratification = new Gratification();
-    gratification.name = this.name;
-    gratification.description = this.description;
-    gratification.quantity = this.quantity;
-    gratification.points = this.points;
-    gratification.parentId = this.parentId;
-    this.gratificationService.create(gratification);
-    this.router.navigate(['gratification']);
+    if(!this.quantity){
+      this.quantity = null;
+    }
+    if(this.name && this.description && this.points){
+      const gratification: Gratification = new Gratification();
+      gratification.name = this.name;
+      gratification.description = this.description;
+      gratification.quantity = this.quantity;
+      gratification.points = this.points;
+      gratification.parentId = this.parentId;
+      this.gratificationService.create(gratification);
+      this.router.navigate(['gratification']);
+    }else{
+      window.alert("É necessario nome, descrição e pontos");
+    }
   }
 }

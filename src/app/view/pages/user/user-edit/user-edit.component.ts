@@ -48,6 +48,7 @@ export class UserEditComponent {
   }
 
   edit(){
+    if(this.name && this.email && this.birthDate)
     if(this.user.admin){
       const parent: UserParent = this.user;
       parent.name = this.name;

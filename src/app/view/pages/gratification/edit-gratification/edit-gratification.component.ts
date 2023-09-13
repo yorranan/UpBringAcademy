@@ -30,12 +30,19 @@ export class EditGratificationComponent implements OnInit {
   }
 
   edit(){
-    this.gratification.name = this.name;
-    this.gratification.description = this.description;
-    this.gratification.quantity = this.quantity;
-    this.gratification.points = this.points;
-    this.gratificationService.update(this.gratification.id, this.gratification);
-    this.router.navigate(['gratification']);
+    if(!this.quantity){
+      this.quantity = null;
+    }
+    if(this.name && this.description && this.points){
+      this.gratification.name = this.name;
+      this.gratification.description = this.description;
+      this.gratification.quantity = this.quantity;
+      this.gratification.points = this.points;
+      this.gratificationService.update(this.gratification.id, this.gratification);
+      this.router.navigate(['gratification']);
+    }else{
+      window.alert("É necessario nome, descrição e pontos");
+    }
   }
   
   cancel(){

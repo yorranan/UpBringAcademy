@@ -63,15 +63,18 @@ const routes: Routes = [
   },
   {
     path: 'gratification',
-    component: GratificationComponent
+    component: GratificationComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'createGratification',
-    component: CreateGratificationComponent
+    component: CreateGratificationComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'gratification/:id',
-    component: EditGratificationComponent
+    component: EditGratificationComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',

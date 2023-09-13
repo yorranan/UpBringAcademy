@@ -13,7 +13,7 @@ export default class TaskService implements ICRUDService<Task> {
     constructor(private firestore: AngularFirestore){}
 
     create(task: Task){
-        task.conclusionDateTime = null;
+        task.conclusionDateTime = [];
         return this.firestore.collection(this.PATH).add(mapper(task));
     }
       read(id: string)
