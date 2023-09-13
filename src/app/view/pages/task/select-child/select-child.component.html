@@ -29,8 +29,11 @@
                   <tr *ngFor="let child of children">
                     <td>{{child.name}}</td>
                     <td>
-                      <section class="example-section">
-<!--                        <mat-checkbox [(ngModel)]="childSelection[child.id]" class="example-margin">Selecionar</mat-checkbox>-->
+                      <section *ngIf="childSelection[child.id]" class="example-section">
+                        <mat-checkbox (change)="choseChild(child.id)" checked="true" class="example-margin">Selecionar</mat-checkbox>
+                      </section>
+                      <section *ngIf="!childSelection[child.id]" class="example-section">
+                        <mat-checkbox (change)="choseChild(child.id)" class="example-margin">Selecionar</mat-checkbox>
                       </section>
                     </td>
                   </tr>
