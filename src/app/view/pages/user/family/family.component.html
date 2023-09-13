@@ -4,10 +4,46 @@
   <div class="content" >
     <div class="col col-lg-12 mb-4 mb-lg-0">
       <div class="card mb-8" style="border-radius: 0.5rem">
+        <div *ngIf="!user.admin" class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+                <h4 class="card-title m-0">Pai</h4>
+            </div>
+            <div class="table-responsive p-0">
+                <table class="table align-middle mb-0">
+                    <!-- Cabeçalho da tabela -->
+                    <thead class="table-header">
+                        <tr>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                Nome
+                            </th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                Email
+                            </th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                Quantidade de Filhos
+                            </th>
+                        </tr>
+                    </thead>
+                    <!-- Conteúdo da tabela (aqui você pode adicionar suas linhas de dados) -->
+                    <tbody>
+                        <tr *ngFor="let child of children">
+                            <td (click)="toUser(parent.id)">{{parent.name}}</td>
+                            <td>{{parent.email}}</td>
+                            <td class="text-center">{{parent.childrenId.length}}</td>
+                        </tr>
+                        <!-- Adicione mais linhas conforme necessário -->
+                        <!--codigo certo-->
+                    </tbody>
+                </table>
+            </div>
+        </div>
           <div class="card-body">
-              <div class="d-flex justify-content-between align-items-center">
-                  <h4 class="card-title m-0">Gratificações</h4>
-                  <button (click)="toRegisterChild()" type="button" class="btn btn-primary btn-lg btn-success">Cadastrar Filho</button>
+              <div *ngIf="user.admin" class="d-flex justify-content-between align-items-center">
+                <h4 class="card-title m-0">Filhos</h4>
+                <button (click)="toRegisterChild()" type="button" class="btn btn-primary btn-lg btn-success">Cadastrar Filho</button>
+              </div>
+              <div *ngIf="!user.admin" class="d-flex justify-content-between align-items-center">
+                <h4 class="card-title m-0">Irmãos</h4>
               </div>
               <div class="table-responsive p-0">
                   <table class="table align-middle mb-0">
@@ -18,7 +54,7 @@
                                   Nome
                               </th>
                               <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                  Descrição
+                                  Email
                               </th>
                               <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                   Pontos
@@ -28,7 +64,7 @@
                       <!-- Conteúdo da tabela (aqui você pode adicionar suas linhas de dados) -->
                       <tbody>
                           <tr *ngFor="let child of children">
-                              <td (click)="toChild(child.id)">{{child.name}}</td>
+                              <td (click)="toUser(child.id)">{{child.name}}</td>
                               <td>{{child.email}}</td>
                               <td class="text-center">{{child.points}}</td>
                           </tr>
