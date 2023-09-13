@@ -21,6 +21,8 @@ export default class UserParentService implements ICRUDService<UserParent>{
       return this.auth.createUserWithEmailAndPassword(user.email, user.password)
       .then((credendial) =>{
         return this.firestore.collection(this.PATH).doc(credendial.user.uid).set(mapper(user));
+      }).catch(error => {
+        window.alert(error)
       });
     }
 

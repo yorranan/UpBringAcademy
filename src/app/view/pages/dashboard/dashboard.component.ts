@@ -12,7 +12,7 @@ export class DashboardComponent implements OnInit {
   tasks: Task[];
 
   constructor(private taskService: TaskService){
-
+    
   }
 
   ngOnInit(): void {

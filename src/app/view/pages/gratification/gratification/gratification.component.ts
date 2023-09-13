@@ -66,15 +66,23 @@ export class GratificationComponent implements OnInit{
   }
 
   redeem(gratification: Gratification){
-    this.user.points -= gratification.points;
-    if(gratification.quantity !== null){
-      gratification.quantity--;
+    if(this.user.points < gratification.points){
+      window.alert("Pontos insuficientes")
+    }else{
+      this.user.points -= gratification.points;
+      if(gratification.quantity <= 0){
+        window.alert("Essa bonificação está esgotada");
+      }else{
+        if(gratification.quantity !== null){
+          gratification.quantity--;
+        }
+        const dateReference: DateReference = new DateReference()
+        dateReference.childId = this.user.id;
+        dateReference.dateTime = new Date();
+        gratification.redeemDateTime.push(dateReference);
+        this.gratificationService.update(gratification.id, gratification);
+        this.childService.update(this.user.id, this.user);
+      }
     }
-    const dateReference: DateReference = new DateReference()
-    dateReference.childId = this.user.id;
-    dateReference.dateTime = new Date();
-    gratification.redeemDateTime.push(dateReference);
-    this.gratificationService.update(gratification.id, gratification);
-    this.childService.update(this.user.id, this.user);
   }
 }

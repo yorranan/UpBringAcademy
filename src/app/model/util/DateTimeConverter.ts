@@ -1,4 +1,13 @@
+import { DatePipe } from "@angular/common";
+import { Injectable } from "@angular/core";
+
+@Injectable({
+    providedIn: 'root'
+})
 export default class DateTimeConverter{
+
+    constructor(private datePipe: DatePipe){}
+
     convertDataTime(date: Date): string{
         const today = new Date();
         const tomorrow = new Date()
@@ -18,6 +27,13 @@ export default class DateTimeConverter{
     }
 
     convertDate(date: Date): string{
-        return `${date.getDate()}/${(date.getMonth()+1)}/${date.getFullYear()}`;
+        const formatedDate = this.datePipe.transform(date, 'yyyy-MM-dd');
+
+        const partes = formatedDate.split('-');
+        const year = +partes[0];
+        const month = +partes[1];
+        const day = +partes[2];
+
+        return(`${day}/${month}/${year}`);
     }
 }

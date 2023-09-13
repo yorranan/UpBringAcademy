@@ -37,7 +37,7 @@
                                 <td class="text-center">{{gratification.quantity}}x</td>
                                 <td *ngIf="user.admin"><button (click)="toEditGratification(gratification)" class="btn btn-primary btn-lg">Editar <i class="bi bi-pencil-square"></i></button>
                                     <button (click)="delete(gratification)" class="btn btn-primary btn-lg">Excluir <i class="bi bi-x-lg"></i></button></td>
-                                <td *ngIf="!user.admin" class="text-center"><button (click)="redeem(gratification)" class="btn btn-success btn-lg" [disabled]="user.points < gratification.points">Resgatar </button></td>
+                                <td *ngIf="!user.admin" class="text-center"><button (click)="redeem(gratification)" class="btn btn-success btn-lg" [disabled]="user.points < gratification.points || gratification.quantity == 0">Resgatar </button></td>
                           </tr>
                           <!-- Adicione mais linhas conforme necessário -->
                           <!--codigo certo-->

@@ -31,14 +31,18 @@ export class RegisterChildComponent implements OnInit {
   }
 
   register(){
-    const child: UserChild =  new UserChild();
-    child.name = this.name;
-    child.birthDate = this.birthDate;
-    child.email =this.email;
-    child.password = this.password;
-    child.parentId = this.parent.id;
-    console.log(this.parent.childrenId);
-    this.childService.create(child, this.parent);
-    this.router.navigate(['family']);
+    if(this.name && this.birthDate && this.email && this.password){
+      const child: UserChild =  new UserChild();
+      child.name = this.name;
+      child.birthDate = this.birthDate;
+      child.email =this.email;
+      child.password = this.password;
+      child.parentId = this.parent.id;
+      this.childService.create(child, this.parent);
+      this.router.navigate(['dashboard']);
+    }else{
+      window.alert("Todos os campos são obrigatorios");
+    }
+
   }
 }

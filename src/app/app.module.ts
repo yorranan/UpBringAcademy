@@ -29,6 +29,7 @@ import { FamilyComponent } from './view/pages/user/family/family.component';
 import { RegisterChildComponent } from './view/pages/user/register-child/register-child.component';
 import { CreateGratificationComponent } from './view/pages/gratification/create-gratification/create-gratification.component';
 import { EditGratificationComponent } from './view/pages/gratification/edit-gratification/edit-gratification.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,7 @@ import { EditGratificationComponent } from './view/pages/gratification/edit-grat
     AngularFireAuthModule,
     AppRoutingModule,
   ],
-  providers: [TaskService, AuthGuard, Task ],
+  providers: [TaskService, AuthGuard, Task, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
