@@ -31,6 +31,7 @@ export class SelectChildComponent {
   public endDateTime: Date;
   public parentId: string;
   public task: Task;
+  public childSelection: { [childId: string]: boolean } = {};
   constructor(
       private route: ActivatedRoute,
       private taskService: TaskService,
@@ -42,48 +43,28 @@ export class SelectChildComponent {
       private parentService: UserParentService,
   ) {
     this.authUser.getUserAuth().subscribe(user => {
-        if(user){
-          this.user = {
-            id: user.payload.id,
-            ... user.payload.data() as any
-          }
-          if(this.user.admin){
-            this.user.childrenId.forEach((childId) =>{
-              this.childService.read(childId).subscribe(child =>{
-                if(child){
-                  const childFire = {
-                    id: child.payload.id,
-                    ... child.payload.data() as any
-                  } as UserChild
-                  this.children.push(childFire);
-                }
-              })
-            })
-          }else{
-            this.parentService.read(this.user.parentId).subscribe(parent =>{
-              if(parent){
-                this.parent = {
-                  id: parent.payload.id,
-                  ... parent.payload.data() as any
-                }as UserParent
-                this.parent.childrenId.forEach((childId =>{
-                  if(childId !== this.user.id){
-                    this.childService.read(childId).subscribe(child =>{
-                      if(child){
-                        const childFire ={
-                          id: child.payload.id,
-                          ... child.payload.data() as any
-                        } as UserChild
-                        this.children.push(childFire);
-                      }
-                    })
-                  }
-                }))
-              }
-            })
-          }
+      if(user){
+        this.user = {
+          id: user.payload.id,
+          ... user.payload.data() as any
         }
-      })
+        this.user.childrenId.forEach((childId) =>{
+          this.childSelection[childId] = false;
+          this.childService.read(childId).subscribe(child =>{
+            if(child){
+              const childFire = {
+                id: child.payload.id,
+                ... child.payload.data() as any
+              } as UserChild
+              this.children.push(childFire);
+            }
+          })
+        })
+        this.task.conclusionDateTime.forEach(conclusion =>{
+          this.childSelection[conclusion.childId] = true;
+        })
+      }
+    })
   }
 
   ngOnInit() {
@@ -92,33 +73,32 @@ export class SelectChildComponent {
     this.description = this.task.description;
     this.points = this.task.points;
     this.beginDateTime = this.task.beginDateTime;
-    this.endDateTime = this.task.endDateTime
+    this.endDateTime = this.task.endDateTime;
   }
 
-  childSelection: { [childId: string]: boolean } = {};
+  choseChild(childId: string){
+    if(this.childSelection[childId]){
+      this.childSelection[childId] = false;
+    }else{
+      this.childSelection[childId] = true;
+    }
+  }
 
   selectChild() {
-    this.selectedChildIds = Object.keys(this.childSelection)
-        .filter(childId => this.childSelection[childId])
-        .map(String); // Converter para string
-    console.log('IDs das crianças selecionadas:', this.selectedChildIds);
+    const conclusionDateTime: DateReference[] = [];
+    this.user.childrenId.forEach(childId =>{
+      if(this.childSelection[childId]){
+        conclusionDateTime.push({childId: childId, dateTime: null} as DateReference);
+      }
+    })
+    if(conclusionDateTime.length < 1){
+      window.alert("É nescessario escoleher uma criança");
+    }else{
+      this.task.conclusionDateTime = conclusionDateTime;
+      this.taskService.update(this.task.id, this.task);
+      this.router.navigate(['task']);
+    }
   }
 
-    sendSelectedChild(selectedChildIds:number[]){
-      // this.task.name = this.name;
-      // this.task.description = this.description;
-      // this.task.points = this.points;
-      // this.task.beginDateTime = this.beginDateTime;
-      // this.task.endDateTime = this.endDateTime;
-      // const task = new Task;
-      // const dateReference = new DateReference();
-      // dateReference.childId = selectedChildIds;
-      //
-      // task.conclusionDateTime = [dateReference];
-
-    //   this.taskService.update(this.task.id, this.task);
-    //   this.router.navigate(['task']);
-    //  console.log('IDs das crianças selecionadas:', selectedChildIds);
-    }
 
   }
