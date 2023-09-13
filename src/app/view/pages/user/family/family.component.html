@@ -40,7 +40,7 @@
           <div class="card-body">
               <div *ngIf="user.admin" class="d-flex justify-content-between align-items-center">
                 <h4 class="card-title m-0">Filhos</h4>
-                <button (click)="toRegisterChild()" type="button" class="btn btn-primary btn-lg btn-success">Cadastrar Filho</button>
+                <button (click)="toRegisterChild()" type="button" class="btn btn-primary btn-lg btn-success">Cadastrar Filho <i class="bi bi-file-person"></i></button>
               </div>
               <div *ngIf="!user.admin" class="d-flex justify-content-between align-items-center">
                 <h4 class="card-title m-0">Irmãos</h4>
