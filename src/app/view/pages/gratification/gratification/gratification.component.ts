@@ -78,7 +78,7 @@ export class GratificationComponent implements OnInit{
         }
         const dateReference: DateReference = new DateReference()
         dateReference.childId = this.user.id;
-        dateReference.dateTime = new Date();
+        dateReference.dateTime = new Date;
         gratification.redeemDateTime.push(dateReference);
         this.gratificationService.update(gratification.id, gratification);
         this.childService.update(this.user.id, this.user);

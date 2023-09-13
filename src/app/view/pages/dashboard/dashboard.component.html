@@ -7,17 +7,20 @@
                 <thead>
                   <tr>
                     <th class="text-center">#</th>
-                    <th>Tarefa</th>
-                    <th>Pontos</th>
-                    <th>Prazo</th>
+                    <th>Gratificação</th>
+                    <th>Recuperações</th>
                   </tr>
                 </thead>
-                <tbody *ngFor="let task of tasks">
-                  <tr *ngIf>
+                <tbody >
+                  <tr *ngFor="let gratification of gratifications">
                     <td>1</td>
-                    <td>{{task.name}}</td>
-                    <td>{{task.points}}</td>
-                    <td></td>
+                    <td>{{gratification.name}}</td>
+                    <td>
+                      <div *ngFor="let redeem of gratification.redeemDateTime">
+                        <div>{{getChild(redeem.childId).name}}</div>
+                        <div>{{convertDateTime(redeem.dateTime)}}</div>
+                      </div>
+                    </td>
                   </tr>
                 </tbody>
               </table>
