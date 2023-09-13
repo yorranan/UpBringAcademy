@@ -10,7 +10,7 @@
             <div class="card-body">
               <div class="d-flex justify-content-between align-items-center">
                 <h4 class="card-title m-0">Tarefa</h4>
-                  <button  *ngIf="user.admin" (click)="create()" type="button" class="btn btn-primary btn-lg btn-success">Nova Tarefa</button>
+                  <button  *ngIf="user.admin" (click)="create()" type="button" class="btn btn-primary btn-lg btn-success">Nova Tarefa <i class="bi bi-clipboard-plus-fill"></i></button>
               </div>
               <br/>
               <div class="table-responsive p-0">
@@ -35,9 +35,9 @@
                     <td>{{task.name}}</td>
                     <td>{{task.description}}</td>
                     <td>{{task.points}}</td>
-                    <td *ngIf="user.admin"><button (click)="update(task)" type="button" class="btn btn-primary btn-lg btn-success">Editar</button></td>
-                    <td *ngIf="user.admin"><button (click)="deleted(task)" type="button" class="btn btn-primary btn-lg btn-success">Excluir</button></td>
-                    <td *ngIf="user.admin"><button (click)="select(task)" type="button" class="btn btn-primary btn-lg btn-success">Atribuir</button></td>
+                    <td *ngIf="user.admin"><button (click)="update(task)" type="button" class="btn btn-primary btn-lg btn-primary">Editar <i class="bi bi-pencil-square"></i></button></td>
+                    <td *ngIf="user.admin"><button (click)="select(task)" type="button" style="background-image: linear-gradient(#354f52, #52796F);" class="btn btn-primary btn-lg">Atribuir <i class="bi bi-person-add"></i></button></td>
+                    <td *ngIf="user.admin"><button (click)="deleted(task)" type="button" style="background-image: linear-gradient(#DB1213, #FA4D17);" class="btn btn-primary btn-lg">Excluir <i class="bi bi-x-lg"></i></button></td>
                     <td *ngIf="!user.admin" class="text-center"><button (click)="done(task)" class="btn btn-success btn-lg" >Concluir </button></td>
                   </tr>
                   <!-- Adicione mais linhas conforme necessário -->
