@@ -9,12 +9,14 @@ import UserChild from "../../../../model/entities/UserChild";
 import UserParent from "../../../../model/entities/UserParent";
 import UserChildService from "../../../../model/service/UserChildService";
 import UserParentService from "../../../../model/service/UserPerentService";
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import DateReference from "../../../../model/util/DateReference";
 
 @Component({
   selector: 'app-select-child',
   templateUrl: './select-child.component.html',
-  styleUrls: ['./select-child.component.css']
+  styleUrls: ['./select-child.component.css'],
 })
 export class SelectChildComponent {
 

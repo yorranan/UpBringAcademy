@@ -1,52 +1,95 @@
 <app-sidebar></app-sidebar>
 <main class="main-panel">
   <app-navbar></app-navbar>
-  <div class="content" >
+  <div class="content">
     <div class="col col-lg-12 mb-4 mb-lg-0">
       <div class="card mb-8" style="border-radius: 0.5rem">
-          <div class="card-body">
-              <div class="d-flex justify-content-between align-items-center">
-                  <h4 class="card-title m-0">Gratificações</h4>
-                  <button *ngIf="user.admin" (click)="toCreateGratification()" type="button" class="btn btn-primary btn-lg btn-success">Criar Gratificação</button>
-              </div>
-              <div class="table-responsive p-0">
-                  <table class="table align-middle mb-0">
-                      <!-- Cabeçalho da tabela -->
-                      <thead class="table-header">
-                          <tr>
-                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                  Nome
-                              </th>
-                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                  Descrição
-                              </th>
-                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                  Pontos
-                              </th>
-                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                Quantidade
-                            </th>
-                          </tr>
-                      </thead>
-                      <!-- Conteúdo da tabela (aqui você pode adicionar suas linhas de dados) -->
-                      <tbody>
-                          <tr *ngFor="let gratification of gratifications">
-                                <td>{{gratification.name}}</td>
-                                <td>{{gratification.description}}</td>
-                                <td class="text-center">{{gratification.points}}</td>
-                                <td class="text-center">{{gratification.quantity}}x</td>
-                                <td *ngIf="user.admin"><button (click)="toEditGratification(gratification)" class="btn btn-primary btn-lg">Editar <i class="bi bi-pencil-square"></i></button>
-                                    <button (click)="delete(gratification)" class="btn btn-primary btn-lg">Excluir <i class="bi bi-x-lg"></i></button></td>
-                                <td *ngIf="!user.admin" class="text-center"><button (click)="redeem(gratification)" class="btn btn-success btn-lg" [disabled]="user.points < gratification.points || gratification.quantity == 0">Resgatar </button></td>
-                          </tr>
-                          <!-- Adicione mais linhas conforme necessário -->
-                          <!--codigo certo-->
-                      </tbody>
-                  </table>
-              </div>
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
+            <h4 class="card-title m-0">Gratificações</h4>
+            <button
+              *ngIf="user.admin"
+              (click)="toCreateGratification()"
+              type="button"
+              class="btn btn-primary btn-lg btn-success"
+            >
+              Criar Gratificação <i class="bi bi-trophy-fill"></i>
+            </button>
           </div>
+          <div class="table-responsive p-0">
+            <table class="table align-middle mb-0">
+              <!-- Cabeçalho da tabela -->
+              <thead class="table-header">
+                <tr>
+                  <th
+                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                  >
+                    Nome
+                  </th>
+                  <th
+                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                  >
+                    Descrição
+                  </th>
+                  <th
+                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                  >
+                    Pontos
+                  </th>
+                  <th
+                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                  >
+                    Quantidade
+                  </th>
+                </tr>
+              </thead>
+              <!-- Conteúdo da tabela (aqui você pode adicionar suas linhas de dados) -->
+              <tbody>
+                <tr *ngFor="let gratification of gratifications">
+                  <td>{{ gratification.name }}</td>
+                  <td>{{ gratification.description }}</td>
+                  <td class="text-center">{{ gratification.points }}</td>
+                  <td class="text-center">{{ gratification.quantity }}x</td>
+                  <td *ngIf="user.admin">
+                      <button
+                        (click)="toEditGratification(gratification)"
+                        style="
+                          padding-right: 2.5rem;
+                          margin-right: 1rem;
+                        "
+                        class="btn btn-primary btn-lg"
+                      >
+                        Editar <i class="bi bi-pencil-square"></i>
+                      </button>
+                      <button
+                        (click)="delete(gratification)"
+                        class="btn btn-lg" style="background-image: linear-gradient(#DB1213, #FA4D17);"
+                      >
+                        Excluir <i class="bi bi-x-lg"></i>
+                      </button>
+                  </td>
+                  <td *ngIf="!user.admin" class="text-center">
+                    <button
+                      (click)="redeem(gratification)"
+                      style="padding-right: 2.5rem"
+                      class="btn btn-success btn-lg"
+                      [disabled]="
+                        user.points < gratification.points ||
+                        gratification.quantity == 0
+                      "
+                    >
+                      Resgatar
+                    </button>
+                  </td>
+                </tr>
+                <!-- Adicione mais linhas conforme necessário -->
+                <!--codigo certo-->
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-  </div>  
+    </div>
   </div>
   <app-footer></app-footer>
 </main>
