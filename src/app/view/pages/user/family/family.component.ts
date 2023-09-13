@@ -13,11 +13,7 @@ export class FamilyComponent {
   user;
   children: UserChild[] = [];
   constructor(private router: Router, private auth: AuthService, private childService: UserChildService){
-    this.setUser()
-  }
-
-  setUser(){
-    return this.auth.getUserAuth().subscribe(user =>{
+    this.auth.getUserAuth().subscribe(user =>{
       if(user){
         this.user = {
           id: user.payload.id,
@@ -37,6 +33,8 @@ export class FamilyComponent {
       }
     })
   }
+
+  
   
 toChild(childId: string){
   this.router.navigate(["/user", childId]);

@@ -1,7 +1,11 @@
 import { AngularFirestore } from "@angular/fire/compat/firestore";
 import Gratification from "../entities/Gratification";
 import ICRUDService from "./ICRUDService";
+import { Injectable } from "@angular/core";
 
+@Injectable({
+    providedIn: 'root'
+})
 export default class GratificationService implements ICRUDService<Gratification>{
     private PATH: string = 'gratifications'
 
@@ -23,17 +27,21 @@ export default class GratificationService implements ICRUDService<Gratification>
     delete(id: string){
         return this.firestore.collection(this.PATH).doc(id).delete()
     }
+
+    getByParent(parentId: string){
+        return this.firestore.collection(this.PATH, ref => ref.where('parentId', '==', parentId)).snapshotChanges()
+    }
 }
 
 function mapper(gratification: Gratification){
     return {
         name: gratification.name,
-        description: gratification.desciption,
+        description: gratification.description,
         points: gratification.points,
         quantity: gratification.quantity,
-        parentId: gratification.parent.id,
-        reedemDateTime: gratification.redeemDateTime.map(reedem => (
-            {childId: reedem.child.id, dateTime: reedem.dateTime}
+        parentId: gratification.parentId,
+        redeemDateTime: gratification.redeemDateTime.map(redeem => (
+            {childId: redeem.childId, dateTime: redeem.dateTime}
         ))
     };
 }

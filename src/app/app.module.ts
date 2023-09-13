@@ -27,6 +27,8 @@ import { CreateTaskComponent } from './view/pages/task/create-task/create-task.c
 import Task from "./model/entities/Task";
 import { FamilyComponent } from './view/pages/user/family/family.component';
 import { RegisterChildComponent } from './view/pages/user/register-child/register-child.component';
+import { CreateGratificationComponent } from './view/pages/gratification/create-gratification/create-gratification.component';
+import { EditGratificationComponent } from './view/pages/gratification/edit-gratification/edit-gratification.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { RegisterChildComponent } from './view/pages/user/register-child/registe
     CreateTaskComponent,
     FamilyComponent,
     RegisterChildComponent,
+    CreateGratificationComponent,
+    EditGratificationComponent,
   ],
   imports: [
     FormsModule,

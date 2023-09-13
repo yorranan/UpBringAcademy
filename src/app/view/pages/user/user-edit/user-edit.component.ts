@@ -31,7 +31,7 @@ export class UserEditComponent {
   }
 
   delete(){
-    const message = 'Esse usuario ser EXCLUIDO!';
+    const message = 'Esse usuario sera EXCLUIDO!';
     const confirmed = this.confirm(message);
 
     if (confirmed) {

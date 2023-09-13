@@ -13,6 +13,8 @@ import { UserEditComponent } from "./view/pages/user/user-edit/user-edit.compone
 import { CreateTaskComponent } from "./view/pages/task/create-task/create-task.component";
 import { FamilyComponent } from "./view/pages/user/family/family.component";
 import { RegisterChildComponent } from "./view/pages/user/register-child/register-child.component";
+import { CreateGratificationComponent } from "./view/pages/gratification/create-gratification/create-gratification.component";
+import { EditGratificationComponent } from "./view/pages/gratification/edit-gratification/edit-gratification.component";
 
 
 const routes: Routes = [
@@ -48,6 +50,14 @@ const routes: Routes = [
   {
     path: 'gratification',
     component: GratificationComponent
+  },
+  {
+    path: 'createGratification',
+    component: CreateGratificationComponent
+  },
+  {
+    path: 'gratification/:id',
+    component: EditGratificationComponent
   },
   {
     path: 'login',
