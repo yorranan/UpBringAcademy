@@ -54,7 +54,7 @@ export class TaskComponent implements OnInit {
                 } as Task
               });
             }
-            console.log(this.parentId);
+            console.log(this.tasks);
             console.log('admin');
           });
         } else {

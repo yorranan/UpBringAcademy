@@ -11,7 +11,7 @@
                     <th>Recuperações</th>
                   </tr>
                 </thead>
-                <tbody >
+                <tbody *ngIf="user.admin">
                   <tr *ngFor="let gratification of gratifications">
                     <td>1</td>
                     <td>{{gratification.name}}</td>
