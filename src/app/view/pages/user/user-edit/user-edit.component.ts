@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import UserChild from 'src/app/model/entities/UserChild';
 import UserParent from 'src/app/model/entities/UserParent';
 import UserChildService from 'src/app/model/service/UserChildService';
@@ -16,8 +16,9 @@ export class UserEditComponent {
   name: string;
   email: string;
   birthDate: Date;
+  showAlert = false;
 
-  constructor(private router: Router, private parentService: UserParentService, private childService: UserChildService, private dialog: MatDialog){
+  constructor(private router: Router, private parentService: UserParentService, private childService: UserChildService, private modal: NgbModal){
 
   }
 
@@ -30,9 +31,24 @@ export class UserEditComponent {
   }
 
   delete(){
+    const message = 'Esse usuario sera EXCLUIDO!';
+    const confirmed = this.confirm(message);
+
+    if (confirmed) {
+      if(this.user.admin){
+        this.parentService.delete(this.user.id, this.user);
+      }else{
+        this.childService.delete(this.user.id, this.user);
+      }
+    }
+  }
+
+  confirm(message: string): boolean {
+    return window.confirm(message);
   }
 
   edit(){
+    if(this.name && this.email && this.birthDate)
     if(this.user.admin){
       const parent: UserParent = this.user;
       parent.name = this.name;

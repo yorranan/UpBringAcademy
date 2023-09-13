@@ -25,7 +25,11 @@ import { AuthGuard } from './guard/auth.guard';
 import { UserEditComponent } from './view/pages/user/user-edit/user-edit.component';
 import { CreateTaskComponent } from './view/pages/task/create-task/create-task.component';
 import Task from "./model/entities/Task";
-
+import { FamilyComponent } from './view/pages/user/family/family.component';
+import { RegisterChildComponent } from './view/pages/user/register-child/register-child.component';
+import { CreateGratificationComponent } from './view/pages/gratification/create-gratification/create-gratification.component';
+import { EditGratificationComponent } from './view/pages/gratification/edit-gratification/edit-gratification.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -41,6 +45,10 @@ import Task from "./model/entities/Task";
     RegisterComponent,
     UserEditComponent,
     CreateTaskComponent,
+    FamilyComponent,
+    RegisterChildComponent,
+    CreateGratificationComponent,
+    EditGratificationComponent,
   ],
   imports: [
     FormsModule,
@@ -52,10 +60,8 @@ import Task from "./model/entities/Task";
     AngularFirestoreModule,
     AngularFireAuthModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    MatDialogModule
   ],
-  providers: [TaskService, AuthGuard, Task ],
+  providers: [TaskService, AuthGuard, Task, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

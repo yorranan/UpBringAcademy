@@ -4,6 +4,7 @@ import User from 'src/app/model/entities/User';
 import AuthService from 'src/app/model/service/AuthService';
 import UserChildService from 'src/app/model/service/UserChildService';
 import UserParentService from 'src/app/model/service/UserPerentService';
+import DateTimeConverter from 'src/app/model/util/DateTimeConverter';
 
 @Component({
   selector: 'app-user',
@@ -17,7 +18,7 @@ export class UserComponent implements OnInit {
   user;
   auth: User;
 
-  constructor(private router: Router,private activateRoute: ActivatedRoute, private authService: AuthService, private parentService: UserParentService, private childService: UserChildService){
+  constructor(private router: Router,private activateRoute: ActivatedRoute, private authService: AuthService, private parentService: UserParentService, private childService: UserChildService, private converter: DateTimeConverter){
     this.admin = history.state.admin;
     this.activateRoute.params.subscribe(params =>{
       this.id = params['id'];
@@ -47,6 +48,10 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
 
+  }
+
+  convert(date: Date){
+    return this.converter.convertDate(date);
   }
 
   toEdit(){

@@ -11,6 +11,10 @@ import { RegisterComponent } from "./view/pages/authentication/register/register
 import { AuthGuard }  from "./guard/auth.guard";
 import { UserEditComponent } from "./view/pages/user/user-edit/user-edit.component";
 import { CreateTaskComponent } from "./view/pages/task/create-task/create-task.component";
+import { FamilyComponent } from "./view/pages/user/family/family.component";
+import { RegisterChildComponent } from "./view/pages/user/register-child/register-child.component";
+import { CreateGratificationComponent } from "./view/pages/gratification/create-gratification/create-gratification.component";
+import { EditGratificationComponent } from "./view/pages/gratification/edit-gratification/edit-gratification.component";
 
 
 const routes: Routes = [
@@ -25,8 +29,18 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'registerChild',
+    component: RegisterChildComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'user/:id/edit',
     component: UserEditComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'family',
+    component: FamilyComponent,
     canActivate: [AuthGuard]
   },
   {
@@ -35,7 +49,18 @@ const routes: Routes = [
   },
   {
     path: 'gratification',
-    component: GratificationComponent
+    component: GratificationComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'createGratification',
+    component: CreateGratificationComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'gratification/:id',
+    component: EditGratificationComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',

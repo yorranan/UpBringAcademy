@@ -33,9 +33,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.location = location;
     this.sidebarVisible = false;
     this.authService.getUserAuth().subscribe(res => {
-      this.auth = {
-        id: res.payload.id,
-        ... res.payload.data() as any
+      if(res){
+        this.auth = {
+          id: res.payload.id,
+          ... res.payload.data() as any
+        }
       }
     })
   }
@@ -205,7 +207,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   profile(){
-    this.router.navigate(["/user", this.auth.id], {state:{admin: this.auth.admin}});
+    this.router.navigate(["/user", this.auth.id]);
   }
 
   logOut(){

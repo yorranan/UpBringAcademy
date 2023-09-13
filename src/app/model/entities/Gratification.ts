@@ -1,4 +1,3 @@
-import UserParent from "./UserParent";
 import DateReference from "../util/DateReference";
 
 export default class Gratification{
@@ -7,7 +6,7 @@ export default class Gratification{
     private _description: string;
     private _points: number;
     private _quantity: number;
-    private _parent: UserParent;
+    private _parentId: string;
     private _redeemDateTime: DateReference[];
 
     get id(): string{
@@ -30,7 +29,7 @@ export default class Gratification{
         return this._description;
     }
 
-    set desciption(desciption: string){
+    set description(desciption: string){
         this._description = desciption;
     }
 
@@ -50,12 +49,12 @@ export default class Gratification{
         this._quantity = quantity;
     }
 
-    get parent(): UserParent{
-        return this._parent;
+    get parentId(): string{
+        return this._parentId;
     }
 
-    set parent(parent: UserParent){
-        this._parent = parent;
+    set parentId(parentId: string){
+        this._parentId = parentId;
     }
 
     get redeemDateTime(): DateReference[]{

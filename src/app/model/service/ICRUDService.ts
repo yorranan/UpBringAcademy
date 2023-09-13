@@ -1,6 +1,6 @@
 export default interface ICRUDService<Entity>{
 
-    create(entity: Entity);
+    create(entity: Entity, aux?: any);
 
     read(id: string);
 
