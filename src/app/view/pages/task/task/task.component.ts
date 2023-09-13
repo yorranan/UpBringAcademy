@@ -60,12 +60,19 @@ export class TaskComponent implements OnInit {
     this.router.navigate(['create-task']);
   }
 
-  update(taksid: string){
-    this.router.navigate(['task',taksid,'edit']);
+  update(task: Task){
+    this.router.navigate(['task',task.id,'edit'],{state:{task: task}} );
   }
+  confirm(message: string): boolean {
+    return window.confirm(message);
+  }
+  deleted(task: Task){
+    const message = `A Tarefa ${task.name} sera APAGADA`;
+    const confirmed = this.confirm(message);
 
-  deleted(taksid: string){
-
+    if (confirmed) {
+      this.taskService.delete(task.id);
+    }
   }
 
 }

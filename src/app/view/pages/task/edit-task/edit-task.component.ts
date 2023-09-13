@@ -19,9 +19,7 @@ export class EditTaskComponent {
   public beginDateTime: Date;
   public endDateTime: Date;
   public parentId: string;
-  public task: any;
-  tasks: Task[] = [];
-  user: any;
+  public task: Task;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,21 +32,25 @@ export class EditTaskComponent {
   ) {}
 
   ngOnInit() {
-    // this.route.params.subscribe(params => {
-    //   const taskId = params['id'];
-    //  this.taskService.read(taskId).subscribe(tasks => {
-    //   if(tasks){
-    //     this.tasks = tasks.map(task => {
-    //       return {
-    //         id: task.payload.doc.id,
-    //         ...task.payload.doc.data() as any
-    //       } as Task
-    //     });
-    //   }
-    //  });
-    // });
+    this.task = history.state.task;
+    this.name = this.task.name;
+    this.description = this.task.description;
+    this.points = this.task.points;
+    this.beginDateTime = this.task.beginDateTime;
+    this.endDateTime = this.task.endDateTime;
   }
   updateTask(){
-
+    this.task.name = this.name;
+    this.task.description = this.description;
+    this.task.points = this.points;
+    this.task.beginDateTime = this.beginDateTime;
+    this.task.endDateTime = this.endDateTime;
+    this.taskService.update(this.task.id, this.task);
+    this.router.navigate(['task']);
   }
+
+  cancel(){
+    this.router.navigate(['task']);
+  }
+  
 }
