@@ -21,6 +21,11 @@ import {SelectChildComponent} from "./view/pages/task/select-child/select-child.
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
+  },
+  {
     path: 'dashboard',
     component: DashboardComponent,
     canActivate: [AuthGuard],
